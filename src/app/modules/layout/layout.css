@@ -1,0 +1,9 @@
+.example-container {
+  width: auto;
+  height: 100%;
+  margin: 10px;
+  background: #eee;
+}
+.main-content{
+    margin-left: 250px
+}

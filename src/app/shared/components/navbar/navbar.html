@@ -1,0 +1,39 @@
+<section class="home-section">
+  <div class="home-header">
+    <div class="title">Header</div>
+    <div class="spacer">
+      <!-- <a mat-icon-button routerLink="" class="menu-item">
+      <mat-icon>notifications</mat-icon>
+      </a> -->
+
+      <!-- Notifications Button -->
+      <button mat-icon-button [matMenuTriggerFor]="notificationMenu" class="menu-item">
+
+          <mat-icon matBadge="3" matBadgeColor="warn">
+            notifications
+          </mat-icon>
+
+        </button>
+
+
+      <!-- Notification Panel -->
+      <mat-menu #notificationMenu="matMenu" class="notification-menu">
+
+        <div class="notification-panel">
+
+          <h3>Notifications</h3>
+
+          <mat-divider></mat-divider>
+
+          @for (item of notifications; track $index) {
+          <div class="notification-item">
+            {{item.title}}
+          </div>
+          }
+
+        </div>
+
+      </mat-menu>
+    </div>
+  </div>
+</section>
