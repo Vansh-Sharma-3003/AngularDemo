@@ -1,0 +1,10 @@
+@for (notification of notifications; track $index) {
+<div class="notification-item">
+    <div class="notification-text">
+      {{notification.text}}
+    </div>
+    <div class="notification-date">
+      <small>{{notification.date | customDate}}</small>
+    </div>
+</div>
+}

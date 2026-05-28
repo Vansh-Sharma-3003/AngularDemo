@@ -2,14 +2,11 @@
   <div class="home-header">
     <div class="title">Header</div>
     <div class="spacer">
-      <!-- <a mat-icon-button routerLink="" class="menu-item">
-      <mat-icon>notifications</mat-icon>
-      </a> -->
 
       <!-- Notifications Button -->
       <button mat-icon-button [matMenuTriggerFor]="notificationMenu" class="menu-item">
 
-          <mat-icon matBadge="3" matBadgeColor="warn">
+          <mat-icon matBadge="{{ badgeCount }}" matBadgeColor="warn">
             notifications
           </mat-icon>
 
@@ -25,11 +22,7 @@
 
           <mat-divider></mat-divider>
 
-          @for (item of notifications; track $index) {
-          <div class="notification-item">
-            {{item.title}}
-          </div>
-          }
+          <app-notifications></app-notifications>
 
         </div>
 

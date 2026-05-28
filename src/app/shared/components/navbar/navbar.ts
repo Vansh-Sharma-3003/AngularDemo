@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NotificationMessages } from '../../../services/notification-messages';
+import { Notifications } from "../notifications/notifications";
+import { NotificationsApiServices } from '../../../services/notificationsApiServices';
+import { NotificationsServices } from '../../../services/notificationsServices';
 
 @Component({
   selector: 'app-navbar',
@@ -14,26 +16,12 @@ import { NotificationMessages } from '../../../services/notification-messages';
     MatMenuModule,
     MatBadgeModule,
     MatDividerModule,
-    MatButtonModule],
+    MatButtonModule, Notifications],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar {
+  
+  @Input() badgeCount: number = 0;
 
-  notifications: Notification[] = [
-  ];
-
-  constructor(private notificationService: NotificationMessages) {}
-
-  ngOnInit() : void {
-    // Fetch notifications from the server and update the notifications array
-    this.getNotifications();
-  }
-
-  getNotifications() {
-    this.notificationService.getNotifications().subscribe((data: Notification[]) => {
-      this.notifications = data;
-      console.log('Notifications fetched:', this.notifications);
-    })
-  }
 }

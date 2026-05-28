@@ -1,5 +1,7 @@
 export interface Notification {
+timestamp: any;
     id: number,
-    title: string,
-    read: boolean
+    read: boolean,
+    text: string,
+    date: string
 }

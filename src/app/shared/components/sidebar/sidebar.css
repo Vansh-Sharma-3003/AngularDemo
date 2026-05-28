@@ -1,6 +1,7 @@
 
 .sidebar{
     width: 250px;
+    height: 100vh;
     padding: 15px;
     border-radius: 10px;
     background-color: rgb(32, 32, 97);

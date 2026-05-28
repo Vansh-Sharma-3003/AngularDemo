@@ -40,13 +40,4 @@
   padding: 10px;
 }
 
-.notification-item {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  cursor: pointer;
-  color: black;
-}
 
-.notification-item:hover {
-  background: #f5f5f5;
-}
