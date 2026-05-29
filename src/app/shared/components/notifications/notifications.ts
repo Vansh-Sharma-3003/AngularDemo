@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NotificationResponse, Notification } from '../../../model/notification';
 import { NotificationsServices } from '../../../services/notificationsServices';
 import { CustomDatePipe } from "../../../pipes/custom-date-pipe";
@@ -16,6 +16,14 @@ import { NotificationFacadeService } from '../../../services/notification-facade
 export class Notifications implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   @Input() viewType: 'broadcast' | 'navbar' = 'broadcast';
+
+
+  @Output() UnreadCount = new EventEmitter<number>();
+
+  sendUnreadCount() {
+    this.UnreadCount.emit(this.unreadCount);
+  }
+
   notifications: Notification[] = [];
   unreadCount: number = 0;
 
@@ -27,6 +35,7 @@ export class Notifications implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.setupSubscriber();
     this.notificationsService.loadNotifications();
+    this.sendUnreadCount();
   }
 
   setupSubscriber() {

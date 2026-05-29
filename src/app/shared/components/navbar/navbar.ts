@@ -21,7 +21,11 @@ import {NotificationFacadeService } from '../../../services/notification-facade-
   styleUrl: './navbar.css',
 })
 export class Navbar {
-  
+
   unreadCount: number = 0;
+
+  receiveUnreadCount(data: number) {
+    this.unreadCount = data;
+  }
 
 }
