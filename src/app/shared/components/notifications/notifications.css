@@ -4,12 +4,24 @@
   cursor: pointer;
   color: black;
 }
+
+.notification-item.unread {
+  background: #def1ff5b;
+  font-weight: bold;
+}
+
+.notification-item.read {
+  background: white;
+}
+
 .notification-item:hover {
   background: #f5f5f5;
 }
+
 .notification-text {
   font-size: 16px;
 }
+
 .notification-date {
   font-size: 12px;
   color: #7a7979;

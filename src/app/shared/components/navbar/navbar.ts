@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -6,8 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Notifications } from "../notifications/notifications";
-import { NotificationsApiServices } from '../../../services/notificationsApiServices';
-import { NotificationsServices } from '../../../services/notificationsServices';
+import { CommonModule } from '@angular/common';
+import {NotificationFacadeService } from '../../../services/notification-facade-service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,12 +16,12 @@ import { NotificationsServices } from '../../../services/notificationsServices';
     MatMenuModule,
     MatBadgeModule,
     MatDividerModule,
-    MatButtonModule, Notifications],
+    MatButtonModule, Notifications, CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar {
   
-  @Input() badgeCount: number = 0;
+  unreadCount: number = 0;
 
 }

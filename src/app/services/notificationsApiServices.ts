@@ -1,24 +1,40 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Notification } from '../model/dataType';
+import { Observable, of } from 'rxjs';
+import { NotificationResponse } from '../model/notification';
+import { NOTIFICATION_MOCK_DATA } from './notification-mock-data';
+
+// const NOTIFICATION_MOCK_DATA: NotificationResponse = {
+//   unreadCount: 3,
+//   notifications: [
+//     {
+//       id: 1,
+//       text: 'New message from John',
+//       date: '2025-12-10',
+//       read: false,
+//       timestamp: Date.now()
+//     },
+//     {
+//       id: 2,
+//       text: 'System update available',
+//       date: '2025-12-09',
+//       read: true,
+//       timestamp: Date.now()
+//     },
+//     {
+//       id: 3,
+//       text: 'Your report is ready',
+//       date: '2025-12-08',
+//       read: false,
+//       timestamp: Date.now()
+//     }
+//   ]
+// };
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationsApiServices {
-
-  messageUrl = 'http://localhost:5000/messages';
-  badgeCount = 'http://localhost:5000/unreadCount';
-
-  constructor(private http: HttpClient) {
-  }
-
-  getNotifications(): Observable<Notification[]> {
-    return this.http.get<Notification[]>(this.messageUrl);
-  }
-
-  getUnreadCount() : Observable<number> {
-    return this.http.get<number>(this.badgeCount);
+  getNotifications(): Observable<NotificationResponse> {
+    return of(NOTIFICATION_MOCK_DATA);
   }
 }

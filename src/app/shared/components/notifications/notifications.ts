@@ -1,49 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { NotificationsApiServices } from '../../../services/notificationsApiServices';
-import { Notification } from '../../../model/dataType';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { NotificationResponse, Notification } from '../../../model/notification';
 import { NotificationsServices } from '../../../services/notificationsServices';
 import { CustomDatePipe } from "../../../pipes/custom-date-pipe";
 import { A11yModule } from "@angular/cdk/a11y";
+import { Subject, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { NotificationFacadeService } from '../../../services/notification-facade-service';
 
 @Component({
   selector: 'app-notifications',
-  imports: [CustomDatePipe, A11yModule],
+  imports: [CustomDatePipe, A11yModule, CommonModule],
   templateUrl: './notifications.html',
   styleUrl: './notifications.css',
 })
-export class Notifications implements OnInit {
+export class Notifications implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+  @Input() viewType: 'broadcast' | 'navbar' = 'broadcast';
+  notifications: Notification[] = [];
+  unreadCount: number = 0;
 
-  notifications: Notification[] = [
-  ];
-
-  badgeCount: number = 3;
-
-  constructor(private notificationsService: NotificationsServices, private notificationsApiService: NotificationsApiServices) { }
+  constructor(
+    private notificationsService: NotificationsServices, 
+    private facadeService: NotificationFacadeService
+  ) { }
 
   ngOnInit(): void {
-    this.notificationsService.notifications =
-      this.notificationsApiService.getNotifications();
-    this.notificationsService.notifications.subscribe({
-      next: (notifications: Notification[]) => {
-        this.notifications = notifications;
-        console.log('Notifications loaded:', this.notifications);
-      },
-      error: (error) => {
-        console.error('Error loading notifications:', error);
-      }
-    });
-
-   this.notificationsService.badgeCount =
-      this.notificationsApiService.getUnreadCount();
-    this.notificationsService.badgeCount.subscribe({
-      next: (count: number) => {
-        this.badgeCount = count;
-        console.log('Badge count loaded:', this.badgeCount);
-      },
-      error: (error) => {
-        console.error('Error loading badge count:', error);
-      }
-    });
+    this.setupSubscriber();
+    this.notificationsService.loadNotifications();
   }
+
+  setupSubscriber() {
+    this.facadeService.notificationsResponse$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (notificationsResponse: NotificationResponse) => {
+          this.notifications = notificationsResponse?.notifications;
+          this.unreadCount = notificationsResponse?.unreadCount || 0;
+        },
+        error: (error) => {
+          console.error('Error receiving notifications response:', error);
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }  
 
 }

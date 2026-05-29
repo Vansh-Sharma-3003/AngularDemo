@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Notification } from '../model/dataType';
-import { Observable } from 'rxjs';
+import { NotificationsApiServices } from './notificationsApiServices';
+import { NotificationFacadeService } from './notification-facade-service';
+import { NotificationResponse } from '../model/notification';
 
 
 @Injectable({
@@ -8,7 +9,20 @@ import { Observable } from 'rxjs';
 })
 export class NotificationsServices {
 
-  notifications:Observable<Notification[]> = new Observable();
+  constructor(
+    private notificationsApiServices: NotificationsApiServices, 
+    private facade: NotificationFacadeService
+  ) { }
 
-  badgeCount: Observable<number> = new Observable();
+
+  loadNotifications() {
+    this.notificationsApiServices.getNotifications().subscribe({
+      next: (notificationResponse: NotificationResponse) => {
+        this.facade.setNotificationResponse(notificationResponse);
+      },
+      error: (error) => {
+        console.error('Error loading notifications:', error);
+      }
+    });
+  }
 }
