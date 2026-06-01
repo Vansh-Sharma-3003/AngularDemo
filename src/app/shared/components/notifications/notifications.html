@@ -1,22 +1,15 @@
-@for (notification of notifications; track $index) {
-  @if (viewType === 'broadcast') {
-    <div class="notification-item {{notification.read ? 'read' : 'unread'}}">
-      <div class="notification-text">
-        {{notification.text}}
-      </div>
-      <div class="notification-date">
-        <small>{{notification.date | customDate}}</small>
-      </div>
+@for (notification of filteredNotifications; track notification.id) {
+  <div
+    class="notification-item"
+    [class.read]="notification.read"
+    [class.unread]="!notification.read"
+  >
+    <div class="notification-text" (click)="markAsRead(notification.id)">
+      {{ notification.text }}
     </div>
-  }
-  @if (viewType === 'navbar' && (!notification.read)) {
-    <div class="notification-item unread">
-      <div class="notification-text">
-        {{notification.text}}
-      </div>
-      <div class="notification-date">
-        <small>{{notification.date | customDate}}</small>
-      </div>
+
+    <div class="notification-date">
+      <small>{{ notification.date | customDate }}</small>
     </div>
-  }
+  </div>
 }

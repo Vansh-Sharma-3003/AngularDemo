@@ -16,19 +16,13 @@ import { NotificationFacadeService } from '../../../services/notification-facade
 export class Notifications implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   @Input() viewType: 'broadcast' | 'navbar' = 'broadcast';
-
-
   @Output() UnreadCount = new EventEmitter<number>();
-
-  sendUnreadCount() {
-    this.UnreadCount.emit(this.unreadCount);
-  }
 
   notifications: Notification[] = [];
   unreadCount: number = 0;
 
   constructor(
-    private notificationsService: NotificationsServices, 
+    private notificationsService: NotificationsServices,
     private facadeService: NotificationFacadeService
   ) { }
 
@@ -38,23 +32,40 @@ export class Notifications implements OnInit, OnDestroy {
     this.sendUnreadCount();
   }
 
+  
   setupSubscriber() {
     this.facadeService.notificationsResponse$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (notificationsResponse: NotificationResponse) => {
-          this.notifications = notificationsResponse?.notifications;
-          this.unreadCount = notificationsResponse?.unreadCount || 0;
-        },
-        error: (error) => {
-          console.error('Error receiving notifications response:', error);
-        }
-      });
+    .pipe(takeUntil(this.destroy$))
+    .subscribe({
+      next: (notificationsResponse: NotificationResponse) => {
+        this.notifications = notificationsResponse?.notifications;
+        this.unreadCount = notificationsResponse?.unreadCount || 0;
+      },
+      error: (error) => {
+        console.error('Error receiving notifications response:', error);
+      }
+    });
+  }
+  
+  get filteredNotifications() {
+    if (this.viewType === 'navbar') {
+      return this.notifications.filter(n => !n.read);
+    }
+    return this.notifications;
+  }
+
+  sendUnreadCount() {
+    this.UnreadCount.emit(this.unreadCount);
+  }
+  
+  markAsRead(id: number) {
+    this.notificationsService.setNotificationRead(id);
+    this.sendUnreadCount();
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-  }  
+  }
 
 }

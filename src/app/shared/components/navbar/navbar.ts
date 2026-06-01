@@ -16,7 +16,10 @@ import {NotificationFacadeService } from '../../../services/notification-facade-
     MatMenuModule,
     MatBadgeModule,
     MatDividerModule,
-    MatButtonModule, Notifications, CommonModule],
+    MatButtonModule, 
+    Notifications, 
+    CommonModule
+  ],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })

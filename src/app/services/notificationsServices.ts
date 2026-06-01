@@ -25,4 +25,15 @@ export class NotificationsServices {
       }
     });
   }
+
+  setNotificationRead(id: number) {
+    this.notificationsApiServices.setNotificationRead(id).subscribe({
+      next: () => {
+        this.loadNotifications();
+      },
+      error: (error) => {
+        console.error('Error setting notification as read:', error);
+      }
+    });
+  }
 }

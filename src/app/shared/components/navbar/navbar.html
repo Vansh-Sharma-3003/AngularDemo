@@ -22,7 +22,7 @@
 
           <mat-divider></mat-divider>
 
-          <app-notifications viewType="navbar" (UnreadCount)="receiveUnreadCount($event)"></app-notifications>
+          <app-notifications [viewType]="'navbar'" (UnreadCount)="receiveUnreadCount($event)"></app-notifications>
 
         </div>
 
