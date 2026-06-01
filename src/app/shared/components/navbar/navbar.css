@@ -1,5 +1,4 @@
 .home-section {
-  /* background-image: radial-gradient(circle farthest-corner at 7.2% 13.6%, #25f9f5 0%, #0846da 90%); */
   height: 60px;
   width: 100%;
   left: 260px;
@@ -37,7 +36,60 @@
 /* navbar.component.css */
 
 .notification-panel {
+  background-color: #fff;
   padding: 10px;
 }
 
+/* Modal Overlay (Outside menu context) */
+.notification-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(3, 3, 8, 0.596);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
 
+.notification-modal-content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.modal-detail h3 {
+  margin-top: 0;
+}
+
+.detail-content p {
+  margin: 10px 0;
+}
