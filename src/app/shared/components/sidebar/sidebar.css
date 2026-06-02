@@ -1,5 +1,5 @@
-
-.sidebar{
+.sidebar {
+    margin-top: 60px;
     width: 250px;
     height: 100vh;
     padding: 15px;
@@ -7,24 +7,29 @@
     background-color: rgb(32, 32, 97);
     color: white;
 }
-.logo{
+
+.logo {
     height: 60px;
     margin: 10px;
     align-content: center;
 }
-.logo-text{
+
+.logo-text {
     font-size: 1.5rem;
 }
-.menu-item{
+
+.menu-item {
     display: block;
     margin: 20px;
     cursor: pointer;
 }
-a{
+
+a {
     color: white;
     text-decoration: none;
 }
-span{
+
+span {
     margin-left: 10px;
     margin-bottom: 10px;
 }

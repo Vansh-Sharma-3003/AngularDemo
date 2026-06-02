@@ -1,0 +1,28 @@
+.mat-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-content {
+    display: block;
+    background-color: white;
+    padding: 20px;
+    max-width: 90vw;
+}
+
+.dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+}
