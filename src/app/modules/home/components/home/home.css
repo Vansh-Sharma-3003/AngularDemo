@@ -2,30 +2,55 @@
     margin-left: 250px;
     display: flex;
     padding: 20px;
-    height: 100%;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    gap: 10px;
+    background-color: #edf6ff;
 }
 
 .panel-1 {
     flex: 1;
-    margin-right: 10px;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #b2ddec;
     border-radius: 8px;
-    height: 100vh;
+
+
 }
 
 .panel-2 {
     flex: 1;
-    margin-left: 10px;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 20px;
+    display: flex;
+    height: 60%;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #b2ddec;
     border-radius: 8px;
-    height: auto;
-    margin-left: auto;
+
 }
 
+
 .notification-list {
-    max-height: 480px;
+    max-height: 470px;
     overflow-y: auto;
     padding-bottom: 10px;
+}
+
+
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background-color: #646464;
+  border-radius: 10px;
 }

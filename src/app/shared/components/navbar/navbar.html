@@ -2,8 +2,6 @@
   <div class="home-header">
     <div class="title">Header</div>
     <div class="spacer">
-
-      <!-- Notifications Button -->
       <button mat-icon-button [matMenuTriggerFor]="notificationMenu" class="menu-item">
 
         <mat-icon matBadge="{{ unreadCount }}" matBadgeColor="warn">
@@ -11,22 +9,13 @@
         </mat-icon>
 
       </button>
-
-
-      <!-- Notification Panel -->
-      <mat-menu #notificationMenu="matMenu" class="notification-menu">
-
+      <mat-menu #notificationMenu="matMenu" panelClass="notification-menu">
         <div class="notification-panel">
-
           <h3>Notifications</h3>
-
           <mat-divider></mat-divider>
-
           <app-notifications [viewType]="'navbar'" (UnreadCount)="receiveUnreadCount($event)"
             #notifComponent></app-notifications>
-
         </div>
-
       </mat-menu>
     </div>
   </div>
