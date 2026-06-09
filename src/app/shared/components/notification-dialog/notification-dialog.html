@@ -1,0 +1,13 @@
+<mat-dialog-actions align="end">
+    <button mat-button color="black" mat-dialog-close class="mat-button">X</button>
+</mat-dialog-actions>
+
+<h2 mat-dialog-title class="dialog-title">
+    <p><strong>Title:</strong> {{ notification?.title }}</p>
+</h2>
+
+<mat-dialog-content class="dialog-content">
+    <p><strong>Notification ID:</strong> {{ notification?.id }}</p>
+    <p><strong>Text:</strong> {{ notification?.text}}</p>
+    <p><strong>Status:</strong> {{ notification?.read ? 'Read' : 'Unread' }}</p>
+</mat-dialog-content>

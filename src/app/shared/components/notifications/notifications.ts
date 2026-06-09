@@ -6,11 +6,13 @@ import { A11yModule } from "@angular/cdk/a11y";
 import { Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { NotificationFacadeService } from '../../../services/notification-facade-service';
-import { MatDivider } from "@angular/material/divider";
+import { TruncatePipe } from '../../pipes/truncate-pipe';
+import { MatDialog } from '@angular/material/dialog';
+import { NotificationDialog } from '../notification-dialog/notification-dialog';
 
 @Component({
   selector: 'app-notifications',
-  imports: [CustomDatePipe, A11yModule, CommonModule, MatDivider],
+  imports: [CustomDatePipe, A11yModule, CommonModule, TruncatePipe],
   templateUrl: './notifications.html',
   styleUrl: './notifications.css',
 })
@@ -21,12 +23,11 @@ export class Notifications implements OnInit, OnDestroy {
 
   notifications: Notification[] = [];
   unreadCount: number = 0;
-  openDetailWindow: boolean = false;
-  selectedNotification: Notification | null = null;
 
   constructor(
     private notificationsService: NotificationsServices,
-    private facadeService: NotificationFacadeService
+    private facadeService: NotificationFacadeService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -66,12 +67,16 @@ export class Notifications implements OnInit, OnDestroy {
     this.sendUnreadCount();
   }
 
-  openFullDetail(notification: Notification) {
-    this.selectedNotification = notification;
-    this.openDetailWindow = true;
-  }
-  closeDetail() {
-    this.openDetailWindow = false;
+  openFullDetail(notification: Notification): void {
+
+    this.dialog.open(NotificationDialog, {
+      width: '400px',
+      height: '300px',
+      data: notification
+    });
+
+    // this.selectedNotification = notification;
+    // this.openDetailWindow = true;
   }
   ngOnDestroy(): void {
     this.destroy$.next();

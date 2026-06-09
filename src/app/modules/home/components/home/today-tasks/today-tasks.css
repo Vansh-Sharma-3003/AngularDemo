@@ -1,0 +1,40 @@
+.today-tasks {
+    margin-top: 20px;
+}
+
+p{
+    padding: 5px;
+    border-radius: 15px;
+    width: 70%;
+}
+
+.task-items{
+    overflow-y: auto;
+    max-height: 180px;
+    margin: 10px;
+}
+
+.task-items::-webkit-scrollbar {
+  width: 6px;
+}
+.task-items::-webkit-scrollbar-track {
+  background: transparent;
+}
+.task-items::-webkit-scrollbar-thumb {
+  background-color: #646464;
+  border-radius: 10px;
+}
+
+
+.task-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.task{
+    display: flex;
+  margin-left: 11px;
+  padding-left: 15px;
+  border-left: 2px solid #dcdcdc;;
+
+}

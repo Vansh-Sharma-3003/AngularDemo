@@ -1,6 +1,6 @@
 import { NotificationResponse } from '../model/notification';
 
-export const NOTIFICATION_MOCK_DATA: NotificationResponse ={
+export const NOTIFICATION_MOCK_DATA: NotificationResponse = {
   "unreadCount": 7,
   "notifications": [
     {
@@ -77,3 +77,4 @@ export const NOTIFICATION_MOCK_DATA: NotificationResponse ={
     }
   ]
 }
+

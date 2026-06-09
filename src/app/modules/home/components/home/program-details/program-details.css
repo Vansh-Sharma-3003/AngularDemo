@@ -1,0 +1,21 @@
+
+
+.program-row {
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 15px;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.program-row > div:first-child {
+    font-weight: 500;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.program-row > div:last-child {
+    min-width: 100px;
+    text-align: left;
+}

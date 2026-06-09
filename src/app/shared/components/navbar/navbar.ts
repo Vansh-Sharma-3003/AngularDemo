@@ -7,7 +7,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Notifications } from "../notifications/notifications";
 import { CommonModule } from '@angular/common';
-import {NotificationFacadeService } from '../../../services/notification-facade-service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,8 +15,8 @@ import {NotificationFacadeService } from '../../../services/notification-facade-
     MatMenuModule,
     MatBadgeModule,
     MatDividerModule,
-    MatButtonModule, 
-    Notifications, 
+    MatButtonModule,
+    Notifications,
     CommonModule
   ],
   templateUrl: './navbar.html',
