@@ -1,0 +1,43 @@
+<div class="today-tasks">
+    <p style="font-size: 20px; font-weight: 900; background-color: rgb(74, 74, 124); color: white;">Today's
+        Tasks</p>
+
+    <div class="task-items">
+        <div>
+            <div class="task-item">
+                <mat-icon [style.color]="iconColor(todayTaskDetails?.scoring)">fiber_manual_record</mat-icon>
+                <p>Scoring</p>
+            </div>
+        </div>
+        <div>
+            <div class="task-item">
+                <mat-icon [style.color]="iconColor(todayTaskDetails?.training?.LMS)">fiber_manual_record</mat-icon>
+                <p>Tranning</p>
+            </div>
+            @for (item of todayTaskDetails?.training | keyvalue; track item.key) {
+            <div class="task">
+                <mat-icon [style.color]="iconColor(item.value)">fiber_manual_record</mat-icon>
+                <p>{{ item.key }}</p>
+            </div>
+            }
+        </div>
+        <div>
+            <div class="task-item">
+                <mat-icon [style.color]="iconColor(todayTaskDetails?.calibration)">fiber_manual_record</mat-icon>
+                <p>Calibration</p>
+            </div>
+        </div>
+        <div>
+            <div class="task-item">
+                <mat-icon [style.color]="iconColor(todayTaskDetails?.certification)">fiber_manual_record</mat-icon>
+                <p>Certification</p>
+            </div>
+        </div>
+        <div>
+            <div class="task-item">
+                <mat-icon [style.color]="iconColor(todayTaskDetails?.monitoring)">fiber_manual_record</mat-icon>
+                <p>Monitoring</p>
+            </div>
+        </div>
+    </div>
+</div>

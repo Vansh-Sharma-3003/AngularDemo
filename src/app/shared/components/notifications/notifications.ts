@@ -6,7 +6,6 @@ import { A11yModule } from "@angular/cdk/a11y";
 import { Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { NotificationFacadeService } from '../../../services/notification-facade-service';
-import { MatDivider } from "@angular/material/divider";
 import { TruncatePipe } from '../../pipes/truncate-pipe';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationDialog } from '../notification-dialog/notification-dialog';

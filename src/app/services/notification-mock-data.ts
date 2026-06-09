@@ -77,3 +77,4 @@ export const NOTIFICATION_MOCK_DATA: NotificationResponse = {
     }
   ]
 }
+

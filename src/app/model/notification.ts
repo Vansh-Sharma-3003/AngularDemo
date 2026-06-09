@@ -4,7 +4,7 @@ export interface Notification {
     title: string,
     read: boolean,
     text: string,
-    date: string
+    date: string;
 }
 
 
@@ -12,3 +12,4 @@ export interface NotificationResponse {
     unreadCount: number;
     notifications: Notification[];
 }
+

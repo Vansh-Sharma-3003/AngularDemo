@@ -12,8 +12,11 @@ export class NotificationFacadeService {
   });
   notificationsResponse$: Observable<NotificationResponse> = this.notificationResponse.asObservable();
 
+  
+
   setNotificationResponse(notificationResponse: NotificationResponse) {
     this.notificationResponse.next(notificationResponse);
   }
 
+  
 }

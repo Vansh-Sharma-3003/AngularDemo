@@ -11,7 +11,7 @@
       </button>
       <mat-menu #notificationMenu="matMenu" panelClass="notification-menu">
         <div class="notification-panel">
-          <h3>Notifications</h3>
+          <h3>Broadcast Messages</h3>
           <mat-divider></mat-divider>
           <app-notifications [viewType]="'navbar'" (UnreadCount)="receiveUnreadCount($event)"
             #notifComponent></app-notifications>

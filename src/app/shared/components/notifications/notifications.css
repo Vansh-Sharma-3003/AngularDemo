@@ -74,4 +74,5 @@
   /* Number of lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-size: 14px;
 }
