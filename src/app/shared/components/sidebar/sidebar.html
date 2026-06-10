@@ -4,21 +4,28 @@
   </div>
   <nav class="menu">
 
-    <a mat-button routerLink="" class="menu-item">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </a>
+    <div class="menu-item">
+      <a mat-button routerLink="" >
+        <mat-icon>home</mat-icon>
+        <p class="sidebar-title">Home</p>
+      </a>
+    </div>
 
-    <a mat-button routerLink="feedback" class="menu-item">
-      <mat-icon>feedback</mat-icon>
-      <span>Feedback</span>
-    </a>
+    <div class="menu-item">
+      <a mat-button routerLink="feedback">
+        <mat-icon>feedback</mat-icon>
+        <p class="sidebar-title">Feedback</p>
+      </a>
+    </div>
 
-    <a mat-button routerLink="admin" class="menu-item">
-      <mat-icon>admin_panel_settings</mat-icon>
-      <span>Admin</span>
 
-    </a>
+    <div class="menu-item">
+      <a mat-button routerLink="admin">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <p class="sidebar-title">Admin</p>
+      </a>
+    </div>
+
 
   </nav>
 </mat-drawer>
