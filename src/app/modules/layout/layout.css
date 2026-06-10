@@ -8,6 +8,7 @@
 .example-content {
   height: 100%;
   overflow: hidden;
+  background-color: #edf6ff;
 }
 
 .main-content {
