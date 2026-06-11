@@ -1,0 +1,16 @@
+<div class="checkbox">
+    
+    <div class="dropdown-header" (click)="toggleDropdown()">
+        Select options
+    </div>
+
+    <div class="dropdown-list" *ngIf="isOpen">
+        <div *ngFor="let item of options" 
+            (click)="toggleSelection(item.value)"
+            [class.selected]="isSelected(item.value)">
+            <input type="checkbox" [checked]="isSelected(item.value)" />
+            {{ item.label }}
+        </div>
+
+    </div>
+</div>
