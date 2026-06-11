@@ -1,0 +1,31 @@
+.search-container{
+    margin-left: 250px;
+    display: flex;
+    padding: 10px;
+    height: calc(100vh - 60px);
+    background-color: #edf6ff;
+    justify-content: center;
+}
+
+.search{
+    height: 80px;
+    width: 100%;
+    justify-items: center;
+    align-content: center;
+}
+.search-form{
+    display: flex;
+}
+
+button:hover{
+    background-color: #636cf6;
+    color: white;
+    cursor: pointer;
+}
+button{
+    height: 30px;
+    width: 60px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #636cf6;
+}

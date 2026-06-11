@@ -1,1 +1,27 @@
-<p>search works!</p>
+<div class="search-container">
+    <div class="search">
+        <form [formGroup]="searchFrom" (ngSubmit)="onSubmit()" class="search-form">
+
+            <app-checkbox formControlName="checkbox" [options]="[
+                { label: 'Active', value: 'active' },
+                { label: 'Inactive', value: 'inactive' },
+                { label: 'Pending', value: 'pending' }
+                ]">
+            </app-checkbox>
+
+            <app-dropdown formControlName="status" [options]="[
+                { label: 'All', value: 'all' },
+                { label: 'Active', value: 'active' },
+                { label: 'Inactive', value: 'inactive' }
+                ]" label="Select Status">
+            </app-dropdown>
+
+
+            <app-input formControlName="search" placeholder="Search" label="Search Bar"
+                class="search-input">
+            </app-input>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
