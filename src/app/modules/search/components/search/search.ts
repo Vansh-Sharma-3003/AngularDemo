@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder,FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../../../../shared/components/ui/form-controls/input-component/input-component';
-import { DropdownComponent } from "../../../../shared/components/ui/form-controls/dropdown-component/dropdown-component";
-import { CheckboxComponent } from "../../../../shared/components/ui/form-controls/checkbox-component/checkbox-component";
-
+import { SelectComponent } from '../../../../shared/components/ui/form-controls/select-component/select-component';
+import { MatIcon } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
 @Component({
   selector: 'app-search',
-  imports: [InputComponent, ReactiveFormsModule, DropdownComponent, CheckboxComponent],
+  imports: [InputComponent, ReactiveFormsModule, SelectComponent, MatIcon, MatMenuModule],
   templateUrl: './search.html',
   styleUrl: './search.css',
 })
@@ -20,6 +20,8 @@ export class Search {
   }
 
   searchFrom!: FormGroup;
+  mobileQuery: any;
+snav: any;
 
   constructor(private fb: FormBuilder){}
 

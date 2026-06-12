@@ -1,31 +1,124 @@
-.search-container{
+.search-container {
     margin-left: 250px;
     display: flex;
     padding: 10px;
     height: calc(100vh - 60px);
     background-color: #edf6ff;
-    justify-content: center;
+    box-sizing: border-box;
+    gap: 10px;
 }
 
-.search{
-    height: 80px;
-    width: 100%;
-    justify-items: center;
-    align-content: center;
+.search-pannal {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #b2ddec;
+    border-radius: 8px;
 }
+
+.search-form-container {
+    display: flex;
+    width: 100%;
+}
+
 .search-form{
     display: flex;
+    width: 100%;
+    gap: 15px;
 }
 
-button:hover{
+.search-form-filter {
+    display: flex;
+    padding: 10px;
+    gap: 15px;
+    height: 50px;
+    width: 85%;
+    background-color: rgba(209, 208, 208, 0.69);
+    border: 1px solid black;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    display: block;
+}
+
+button:hover {
     background-color: #636cf6;
     color: white;
     cursor: pointer;
 }
-button{
+
+button {
     height: 30px;
-    width: 60px;
-    background-color: white;
+    width: 50%;
+    background-color: #636cf6;
+    color: white;
     border-radius: 4px;
-    border: 1px solid #636cf6;
+    border: 1px solid #000000;
 }
+
+.search-button {
+    display: flex;
+    gap: 10px;
+}
+
+.more-filters {
+    display: flex;
+    padding: 10px;
+    height: 50px;
+    width: 10%;
+    gap: 10px;
+    background-color: rgba(209, 208, 208, 0.69);
+    border: 1px solid black;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.menu-item {
+    padding-left: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.show-filters {
+    top: 65px;
+    display: grid;
+    background-color: #fff;
+    padding: 10px;
+    width: 250px;
+    border-radius: 8px;
+    gap: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #646464 transparent;
+}
+
+.show-filters::-webkit-scrollbar {
+  width: 6px;
+}
+
+.show-filters::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.show-filters::-webkit-scrollbar-thumb {
+  background-color: #646464;
+  border-radius: 10px;
+}
+
+.filters-menu{
+    top: 65px;
+    height: 100%;
+}
+.example-sidenav-container{
+    flex: 1;
+}
+
+
