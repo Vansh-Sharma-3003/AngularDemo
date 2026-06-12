@@ -3,19 +3,19 @@ import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: 'app-dropdown',
+  selector: 'app-select',
   imports: [CommonModule],
-  templateUrl: './dropdown-component.html',
-  styleUrl: './dropdown-component.css',
+  templateUrl: './select-component.html',
+  styleUrl: './select-component.css',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DropdownComponent),
+      useExisting: forwardRef(() => SelectComponent),
       multi: true
     }
   ]
 })
-export class DropdownComponent implements ControlValueAccessor {
+export class SelectComponent implements ControlValueAccessor {
 
   @Input() options: { label: string, value: any }[] = [];
   @Input() placeholder: string = '';
