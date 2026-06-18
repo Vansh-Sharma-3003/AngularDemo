@@ -1,0 +1,34 @@
+<div class="more-filters">
+  <div class="menu-item" (click)="onToggle()">
+    <div><mat-icon>list</mat-icon></div>
+    <div><span>More Filters</span></div>
+  </div>
+</div>
+
+<mat-sidenav #drawer [mode]="'over'" position="end" class="drawer">
+  <div class="form-header">
+    <h3>More Filters</h3>
+    <button mat-button (click)="onClose()" class="close-button">X</button>
+  </div>
+
+  <form [formGroup]="filterForm" class="show-filters">
+    <app-input formControlName="search1" placeholder="Search" label="Search Bar" class="search-input">
+    </app-input>
+
+    <app-input formControlName="search2" placeholder="Search" label="Search Bar" class="search-input">
+    </app-input>
+
+    <app-input formControlName="search1" placeholder="Search" label="Search Bar" class="search-input">
+    </app-input>
+
+    
+
+
+  </form>
+
+  <div class="filter-actions">
+    <button mat-button  class="clear-button">Clear</button>
+    <button mat-raised-button color="primary" (click)="onApply()" class="apply-button">Apply</button>
+  </div>
+
+</mat-sidenav>
