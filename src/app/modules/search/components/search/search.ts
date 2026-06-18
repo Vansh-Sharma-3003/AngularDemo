@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { FormBuilder,FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { InputComponent } from '../../../../shared/components/ui/form-controls/input-component/input-component';
-import { SelectComponent } from '../../../../shared/components/ui/form-controls/select-component/select-component';
-import { MatIcon } from "@angular/material/icon";
+import { Component} from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from "@angular/material/menu";
+import { MatSidenavContainer } from "@angular/material/sidenav";
+import { MoreFilters } from '../more-filters/more-filters';
+import { TopFilters } from "../top-filters/top-filters";
 @Component({
   selector: 'app-search',
-  imports: [InputComponent, ReactiveFormsModule, SelectComponent, MatIcon, MatMenuModule],
+  imports: [ ReactiveFormsModule, MatMenuModule, MatSidenavContainer, MoreFilters, TopFilters],
   templateUrl: './search.html',
   styleUrl: './search.css',
 })
@@ -14,21 +14,19 @@ export class Search {
 
   fields = {
     name: {
-      placeholder:'',
+      placeholder: '',
       label: ''
     }
   }
 
   searchFrom!: FormGroup;
-  mobileQuery: any;
-snav: any;
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.searchFrom = this.fb.group({
-      checkbox:[[]],
-      status:['all'],
+      checkbox: [[]],
+      status: ['all'],
       search: ['']
     });
   }
@@ -36,4 +34,5 @@ snav: any;
   onSubmit() {
     console.log('Search value:', this.searchFrom.value);
   }
+
 }

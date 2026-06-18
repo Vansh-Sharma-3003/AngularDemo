@@ -1,0 +1,35 @@
+<div class="top-filters-form">
+    <form 
+        [formGroup]="searchFrom" 
+        (ngSubmit)="onSubmit()" 
+        class="search-form"
+    >
+        <app-select 
+            formControlName="status"
+            label="Select Status" 
+            class="search-input"
+            [options]="config">
+        </app-select>
+    
+        <app-input 
+            formControlName="search" 
+            placeholder="Search" 
+            label="Search Bar" 
+            class="search-input"
+        ></app-input>
+    
+        <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
+        </app-input>
+    
+        <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
+        </app-input>
+    
+        <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
+        </app-input>
+    
+        <div class="buttons">
+            <button type="submit" class="search-button">Search</button>
+            <button type="reset" class="reset-button">Reset</button>
+        </div>
+    </form>
+</div>

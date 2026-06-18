@@ -1,88 +1,14 @@
 <div class="search-container">
-    <div class="search-pannal">
+    <mat-sidenav-container class="search-pannal">
         <div class="search-form-container">
-            <form [formGroup]="searchFrom" (ngSubmit)="onSubmit()" class="search-form">
-
-                <!-- <app-checkbox formControlName="checkbox" [options]="[
-                { label: 'Active', value: 'active' },
-                { label: 'Inactive', value: 'inactive' },
-                { label: 'Pending', value: 'pending' }
-                ]">
-            </app-checkbox> -->
-                <div class="search-form-filter">
-                    <app-select formControlName="status" [options]="[
-                { label: 'All', value: 'all' },
-                { label: 'Active', value: 'active' },
-                { label: 'Inactive', value: 'inactive' }
-                ]" label="Select Status" class="search-input">
-                    </app-select>
-
-                    <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
-                    </app-input>
-                    <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
-                    </app-input>
-                    <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
-                    </app-input>
-                    <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
-                    </app-input>
-
-                    <div class="search-button">
-                        <button type="submit">Search</button>
-                        <button type="reset">Reset</button>
-                    </div>
-                </div>
-
-                <div class="more-filters">
-                    <div mat-icon-button [matMenuTriggerFor]="filtersMenu" class="menu-item">
-                        <mat-icon>list</mat-icon>
-                        <span>More Filters</span>
-                    </div>
-                    <mat-menu #filtersMenu="matMenu" panelClass="filters-menu">
-                        <div class="show-filters">
-                            <h3>More Filters</h3>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                            <app-input formControlName="search" placeholder="Search" label="Search Bar"
-                                class="search-input">
-                            </app-input>
-                        </div>
-                    </mat-menu>
-                </div>
-
-            </form>
-
-
+            <div class="top-filters">
+                <app-top-filters>
+                </app-top-filters>
+            </div>
+            <div class="more-filters">
+                <app-more-filters>
+                </app-more-filters>
+            </div>
         </div>
-    </div>
+    </mat-sidenav-container>
 </div>
