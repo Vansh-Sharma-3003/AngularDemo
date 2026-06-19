@@ -1,8 +1,8 @@
 <div class="form-control">
-    <label *ngIf="label">{{ label }}</label>
+    <label>{{ formControlconfig.label }}</label>
     <input 
-        [type]="type" 
-        [placeholder]="placeholder" 
+        type="text" 
+        [placeholder]="formControlconfig.placeholder" 
         [value]="value" 
         (input)="onInput($event)" 
         (blur)="onBlur()" 

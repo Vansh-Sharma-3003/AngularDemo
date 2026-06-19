@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControlConfig } from '../../../../../model/ui/form-control';
 
 @Component({
   selector: 'app-input',
@@ -16,10 +17,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class InputComponent implements ControlValueAccessor{
-
-  @Input() type: string = 'text';
-  @Input() placeholder: string = '';
-  @Input() label: string = '';
+  
+  @Input() formControlconfig!: FormControlConfig;
 
   value: any = '';
 

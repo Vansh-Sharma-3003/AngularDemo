@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControlConfig } from '../../../../../model/ui/form-control';
 
 @Component({
   selector: 'app-select',
@@ -17,10 +18,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class SelectComponent implements ControlValueAccessor {
 
-  @Input() options: { label: string, value: any }[] = [];
-  @Input() placeholder: string = '';
-  
-  @Input() label: string = '';
+  @Input() formControlconfig!: FormControlConfig;
 
   value: any = '';
 

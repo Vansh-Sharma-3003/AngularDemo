@@ -1,32 +1,40 @@
 <div class="top-filters-form">
     <form 
-        [formGroup]="searchFrom" 
+        [formGroup]="topFilterForm" 
         (ngSubmit)="onSubmit()" 
-        class="search-form"
+        class="top-filter-form"
     >
-        <app-select 
-            formControlName="status"
-            label="Select Status" 
-            class="search-input"
-            [options]="config">
+
+        <app-select
+            [formControlconfig]="topFilters.searchType"
+            formControlName="searchType"
+            class="search-filed">
         </app-select>
-    
-        <app-input 
-            formControlName="search" 
-            placeholder="Search" 
-            label="Search Bar" 
-            class="search-input"
-        ></app-input>
-    
-        <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
+
+        <app-input
+            [formControlconfig]="topFilters.nameId"
+            formControlName="nameId"
+            class="search-filed">
         </app-input>
-    
-        <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
+        
+        <app-select
+            [formControlconfig]="topFilters.status"
+            formControlName="status"
+            class="search-filed">
+        </app-select>
+        
+        <app-select
+            [formControlconfig]="topFilters.searchResult"
+            formControlName="searchResult"
+            class="search-filed">
+        </app-select>
+
+        <app-input
+            [formControlconfig]="topFilters.responseId"
+            formControlName="responseId"
+            class="search-filed">
         </app-input>
-    
-        <app-input formControlName="search" placeholder="Search" label="Search Bar" class="search-input">
-        </app-input>
-    
+        
         <div class="buttons">
             <button type="submit" class="search-button">Search</button>
             <button type="reset" class="reset-button">Reset</button>

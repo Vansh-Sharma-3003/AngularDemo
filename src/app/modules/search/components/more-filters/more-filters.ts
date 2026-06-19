@@ -1,34 +1,67 @@
-import { Component, EventEmitter, Output, ViewChild} from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../../../../shared/components/ui/form-controls/input-component/input-component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { SelectComponent } from '../../../../shared/components/ui/form-controls/select-component/select-component';
 @Component({
   selector: 'app-more-filters',
   imports: [
     CommonModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     InputComponent,
     MatIconModule,
     MatSidenavModule,
+    SelectComponent
   ],
   templateUrl: './more-filters.html',
   styleUrl: './more-filters.css',
 })
 export class MoreFilters {
+
   @ViewChild('drawer') drawer!: MatDrawer;
-  filterForm: FormGroup;
-  openDrawer: boolean = false;
 
-  constructor(private fb: FormBuilder) {
-    this.filterForm = this.fb.group({
-      search1: [''],
-      search2: [''],
-    
-    });
+  moreFilterForm: FormGroup = new FormGroup({
+    responseType : new FormControl(null),
+    leader : new FormControl(null),
+    teamLeader : new FormControl(null),
+    queueTpye : new FormControl(null),
+    candidateId : new FormControl(null),
+    feedback : new FormControl(null)
+  });
+
+  leader = [
+    { key: 'active', value: 'Active' },
+    { key: 'inactive', value: 'Inactive' }
+  ]
+
+  teamLeader = [
+    { key: 'active', value: 'Active' },
+    { key: 'inactive', value: 'Inactive' }
+  ]
+
+  queueTpye = [
+    { key: 'active', value: 'Active' },
+    { key: 'inactive', value: 'Inactive' }
+  ]
+
+  feedback = [
+    { key: 'active', value: 'Active' },
+    { key: 'inactive', value: 'Inactive' }
+  ]
+
+
+  get moreFilters(){
+    return {
+      responseType: { key: 'responseType', label: 'Response Type', placeholder: 'Search by Response Type' },
+      leader: { key: 'leader', label: 'Leader', options: this.leader, defaultOptionLabel: 'ALL' },
+      teamLeader: { key: 'teamLeader', label: 'Team Leader', options: this.teamLeader, defaultOptionLabel: 'ALL' },
+      feedback: { key: 'feedback', label: 'Feedback', options: this.feedback, defaultOptionLabel: 'ALL' },
+      candidateId: { key: 'candidateId', label: 'Candidate Id', placeholder: 'Search by Candidate Id' },
+      queueTpye: { key: 'queueTpye', label: 'Queue Tpye', options: this.queueTpye, defaultOptionLabel: 'ALL' }
+    }
   }
-
   onToggle() {
     this.drawer.toggle();
   }
