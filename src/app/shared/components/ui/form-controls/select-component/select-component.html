@@ -1,8 +1,17 @@
 <div>
-    <label *ngIf="label">{{ label }}</label>
-    <select [value]="value" (change)="handleChange($event)" (blur)="onTouched()" class="dropdown">
-        <option *ngFor="let item of options" [value]="item.value">
-            {{ item.label }}
-        </option>
+    <label>{{ formControlconfig.label }}</label>
+    <select 
+        [value]="value" 
+        (change)="handleChange($event)" 
+        (blur)="onTouched()" 
+        class="dropdown"
+    >
+        <option value="">{{ formControlconfig.defaultOptionLabel }}</option>
+        
+        @for (option of formControlconfig.options; track $index) {
+            <option [value]="option.key">
+                {{ option.value }}
+            </option>
+        }
     </select>
 </div>
