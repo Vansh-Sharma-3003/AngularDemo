@@ -2,11 +2,11 @@
     <mat-sidenav-container class="search-pannal">
         <div class="search-form-container">
             <div class="top-filters">
-                <app-top-filters>
+                <app-top-filters [filterConfig]="filterConfig">
                 </app-top-filters>
             </div>
             <div class="more-filters">
-                <app-more-filters>
+                <app-more-filters [filterConfig]="filterConfig">
                 </app-more-filters>
             </div>
         </div>
