@@ -8,7 +8,7 @@
     >
         <option value="">{{ formControlconfig.defaultOptionLabel }}</option>
         
-        @for (option of formControlconfig.options; track $index) {
+        @for (option of formControlconfig.options | keyvalue; track option.key;) {
             <option [value]="option.key">
                 {{ option.value }}
             </option>

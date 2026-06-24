@@ -1,14 +1,28 @@
 <div class="search-container">
-    <mat-sidenav-container class="search-pannal">
-        <div class="search-form-container">
-            <div class="top-filters">
-                <app-top-filters>
-                </app-top-filters>
+    <div class="search-pannal">
+        <mat-sidenav-container>
+            <div class="search-form-container">
+                <div class="top-filters">
+                    <app-top-filters [filterConfig]="filterConfig">
+                    </app-top-filters>
+                </div>
+                <div class="more-filters">
+                    <app-more-filters [filterConfig]="filterConfig">
+                    </app-more-filters>
+                </div>
             </div>
-            <div class="more-filters">
-                <app-more-filters>
-                </app-more-filters>
-            </div>
+        </mat-sidenav-container>
+
+        <div class="data-table">
+            <app-grid [ELEMENT_DATA]="ELEMENT_DATA"></app-grid>
         </div>
-    </mat-sidenav-container>
+
+        <div class="pagenator">
+            <app-pagenator [length]="(pagedData ?? []).length"
+                [pageSize]="5"
+                [pageSizeOptions]="[5,10,20]"
+                (pageChanged)="onPageChange($event)">
+            </app-pagenator>
+        </div>
+    </div>
 </div>

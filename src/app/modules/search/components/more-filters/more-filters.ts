@@ -1,10 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../../../../shared/components/ui/form-controls/input-component/input-component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { SelectComponent } from '../../../../shared/components/ui/form-controls/select-component/select-component';
+import { FilterConfig } from '../../../../model/ui/form-control';
 @Component({
   selector: 'app-more-filters',
   imports: [
@@ -20,6 +21,8 @@ import { SelectComponent } from '../../../../shared/components/ui/form-controls/
 })
 export class MoreFilters {
 
+  @Input() filterConfig : FilterConfig |null = null;
+
   @ViewChild('drawer') drawer!: MatDrawer;
 
   moreFilterForm: FormGroup = new FormGroup({
@@ -31,35 +34,15 @@ export class MoreFilters {
     feedback : new FormControl(null)
   });
 
-  leader = [
-    { key: 'active', value: 'Active' },
-    { key: 'inactive', value: 'Inactive' }
-  ]
-
-  teamLeader = [
-    { key: 'active', value: 'Active' },
-    { key: 'inactive', value: 'Inactive' }
-  ]
-
-  queueTpye = [
-    { key: 'active', value: 'Active' },
-    { key: 'inactive', value: 'Inactive' }
-  ]
-
-  feedback = [
-    { key: 'active', value: 'Active' },
-    { key: 'inactive', value: 'Inactive' }
-  ]
-
 
   get moreFilters(){
     return {
       responseType: { key: 'responseType', label: 'Response Type', placeholder: 'Search by Response Type' },
-      leader: { key: 'leader', label: 'Leader', options: this.leader, defaultOptionLabel: 'ALL' },
-      teamLeader: { key: 'teamLeader', label: 'Team Leader', options: this.teamLeader, defaultOptionLabel: 'ALL' },
-      feedback: { key: 'feedback', label: 'Feedback', options: this.feedback, defaultOptionLabel: 'ALL' },
+      leader: { key: 'leader', label: 'Leader', options: this.filterConfig?.leader, defaultOptionLabel: 'ALL' },
+      teamLeader: { key: 'teamLeader', label: 'Team Leader', options: this.filterConfig?.teamLeader, defaultOptionLabel: 'ALL' },
+      feedback: { key: 'feedback', label: 'Feedback', options: this.filterConfig?.feedback, defaultOptionLabel: 'ALL' },
       candidateId: { key: 'candidateId', label: 'Candidate Id', placeholder: 'Search by Candidate Id' },
-      queueTpye: { key: 'queueTpye', label: 'Queue Tpye', options: this.queueTpye, defaultOptionLabel: 'ALL' }
+      queueTpye: { key: 'queueTpye', label: 'Queue Tpye', options: this.filterConfig?.queueTpye, defaultOptionLabel: 'ALL' }
     }
   }
   onToggle() {
