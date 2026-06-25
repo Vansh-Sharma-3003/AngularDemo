@@ -3,6 +3,7 @@ import { Component, inject, Input, SimpleChanges, ViewChild } from '@angular/cor
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
+import { SEARCH_FIELDS_MOCK_DATA } from '../../../../modules/search/services/search-mock-data';
 
 @Component({
   selector: 'app-grid',
@@ -16,9 +17,12 @@ export class Grid {
 
   @Input() ELEMENT_DATA: MOCK_TABLE_DATA[]=[];
 
+  readonly FILTERS = SEARCH_FIELDS_MOCK_DATA;
+
   displayedColumns: string[] = [
   'responseId',
   'candidateId',
+  'name',
   'leader',
   'teamLeader',
   'queueType',
