@@ -10,8 +10,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class Pagenator {
 
   @Input() length: number = 0;
-  @Input() pageSize: number = 5;
-  @Input() pageSizeOptions: number[] = [5, 10, 20];
+  @Input() pageSize: number = 10;
+  @Input() pageSizeOptions: number[] = [10, 20, 30, 40, 50];
 
   @Output() pageChanged = new EventEmitter<PageEvent>();
 

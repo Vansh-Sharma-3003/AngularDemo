@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../../../../shared/components/ui/form-controls/input-component/input-component';
 import { SelectComponent } from '../../../../shared/components/ui/form-controls/select-component/select-component';
@@ -11,14 +11,16 @@ import { FilterConfig } from '../../../../model/ui/form-control';
     CommonModule,
     ReactiveFormsModule,
     InputComponent,
-    SelectComponent
+    SelectComponent,
   ],
   templateUrl: './top-filters.html',
   styleUrl: './top-filters.css',
 })
 export class TopFilters {
 
-  @Input() filterConfig : FilterConfig |null = null;
+  @Input() filterConfig: FilterConfig | null = null;
+
+  @Output() topFilterChange = new EventEmitter<any>();
 
   topFilterForm: FormGroup = new FormGroup({
     searchType: new FormControl(null),
@@ -28,7 +30,7 @@ export class TopFilters {
     responseId: new FormControl(null),
   });
 
-  
+
   get topFilters() {
     return {
       searchType: { key: 'searchType', label: 'Search Type', options: this.filterConfig?.searchType, defaultOptionLabel: 'ALL' },
@@ -41,7 +43,9 @@ export class TopFilters {
 
 
   onSubmit() {
+    
     console.log('Search value:', this.topFilterForm.value);
+    this.topFilterChange.emit(this.topFilterForm.value);
   }
 
 }

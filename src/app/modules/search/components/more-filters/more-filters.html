@@ -1,6 +1,13 @@
 <div class="more-filters">
   <div class="menu-item" (click)="onToggle()">
-    <div><mat-icon>list</mat-icon></div>
+    <div>
+      <mat-icon 
+        [matBadge]="applyFilters" 
+        matBadgeColor="warn" 
+        [matBadgeHidden]="applyFilters === 0"
+        >list
+      </mat-icon>
+    </div>
     <div><span>More Filters</span></div>
   </div>
 </div>
@@ -12,47 +19,29 @@
   </div>
 
   <form [formGroup]="moreFilterForm" class="show-filters">
-    
-       <app-select
-            [formControlconfig]="moreFilters.leader"
-            formControlName="leader"
-            class="search-filed">
-        </app-select>
 
-        <app-input
-            [formControlconfig]="moreFilters.candidateId"
-            formControlName="candidateId"
-            class="search-filed">
-        </app-input>
+    <app-select [formControlconfig]="moreFilters.leader" formControlName="leader" class="search-filed">
+    </app-select>
 
-       <app-select
-            [formControlconfig]="moreFilters.teamLeader"
-            formControlName="teamLeader"
-            class="search-filed">
-        </app-select>
+    <app-input [formControlconfig]="moreFilters.candidateId" formControlName="candidateId" class="search-filed">
+    </app-input>
 
-       <app-select
-            [formControlconfig]="moreFilters.queueTpye"
-            formControlName="queueTpye"
-            class="search-filed">
-        </app-select>
+    <app-select [formControlconfig]="moreFilters.teamLeader" formControlName="teamLeader" class="search-filed">
+    </app-select>
 
-       <app-select
-            [formControlconfig]="moreFilters.feedback"
-            formControlName="feedback"
-            class="search-filed">
-        </app-select>
+    <app-select [formControlconfig]="moreFilters.queueTpye" formControlName="queueTpye" class="search-filed">
+    </app-select>
 
-        <app-input
-            [formControlconfig]="moreFilters.responseType"
-            formControlName="responseType"
-            class="search-filed">
-        </app-input>
- 
+    <app-select [formControlconfig]="moreFilters.feedback" formControlName="feedback" class="search-filed">
+    </app-select>
+
+    <app-input [formControlconfig]="moreFilters.responseType" formControlName="responseType" class="search-filed">
+    </app-input>
+
   </form>
 
   <div class="filter-actions">
-    <button mat-button class="clear-button">Clear</button>
+    <button mat-button class="clear-button" type="button" (click)="onClear()">Clear</button>
     <button mat-raised-button color="primary" (click)="onApply()" class="apply-button">Apply</button>
   </div>
 

@@ -13,7 +13,7 @@ export class SearchApiService {
     return of(SEARCH_FIELDS_MOCK_DATA);
   }
 
-  getFilterData(): Observable<MOCK_TABLE_DATA[]>{
+  getTableData(): Observable<MOCK_TABLE_DATA[]>{
     return of (TABLE_DATA);
   }
 }

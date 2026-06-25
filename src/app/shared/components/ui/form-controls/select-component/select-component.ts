@@ -26,7 +26,7 @@ export class SelectComponent implements ControlValueAccessor {
   onTouched = () => { };
 
   writeValue(value: any): void {
-    this.value = value;
+    this.value = value ?? '';
   }
 
   registerOnChange(fn: any): void {

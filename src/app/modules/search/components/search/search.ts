@@ -4,7 +4,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatSidenavContainer } from "@angular/material/sidenav";
 import { MoreFilters } from '../more-filters/more-filters';
 import { TopFilters } from "../top-filters/top-filters";
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 import { SearchFacadeService } from '../../services/search-facade-service';
 import { SearchService } from '../../services/search-service';
 import { FilterConfig } from '../../../../model/ui/form-control';
@@ -24,7 +24,10 @@ import { MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
 })
 export class Search {
 
-  ELEMENT_DATA: MOCK_TABLE_DATA[] = [];
+  topFilters: any = {};
+  moreFilters: any = {};
+
+  ELEMENT_DATA: MOCK_TABLE_DATA[] | null = [];
 
   pagedData: MOCK_TABLE_DATA[] | null = [];
 
@@ -40,7 +43,8 @@ export class Search {
   ngOnInit() {
     this.setUpSubscriber();
     this.searchService.loadFilterConfig();
-    this.searchService.loadFilterData();
+    this.searchService.loadTableData();
+    
   }
 
   setUpSubscriber() {
@@ -48,6 +52,7 @@ export class Search {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (filterConfig) => {
+          console.log("filter Config data of facade :", filterConfig);
           this.filterConfig = filterConfig;
         },
 
@@ -56,23 +61,37 @@ export class Search {
         }
       });
 
-    this.facade.filterData$
+    this.facade.tableData$
+      .pipe(takeUntil(this.destroy$))
+      // .subscribe({
+      //   next: (tableData) => {
+      //     console.log("filter table data of facade :", tableData);
+      //     this.ELEMENT_DATA = tableData;
+      //   },
+
+      //   error: (error) => {
+      //     console.error('Error receiving Filter Config:', error);
+      //   }
+      .subscribe(data => {
+        console.log("filter data of facade :", data);
+        this.facade.setData(data ?? []);
+      });
+
+    this.facade.filteredData$
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (fiterData) => {
-          this.pagedData = fiterData;
-          this.ELEMENT_DATA = (fiterData ?? []).slice(0, 5);
-        },
+        next: (data) => {
 
+          console.log('GRID UPDATE:', data);
+          this.pagedData = data;
+          this.ELEMENT_DATA = [...(data ?? [])].slice(0, 10);
+        },
         error: (error) => {
-          console.error('Error receiving Filter Config:', error);
+          console.error('Error receiving filtered data:', error);
         }
       });
   }
 
-  onSubmit() {
-    console.log('Search value:');
-  }
 
   onPageChange(event: PageEvent) {
     console.log(event);
@@ -89,6 +108,27 @@ export class Search {
 
     console.log(start, end);
     console.log((this.pagedData ?? []).slice(start, end));
+  }
+
+  onMoreFilterApply(filters: any) {
+    console.log('More filters saved:', filters);
+
+    this.moreFilters = filters;
+  }
+
+  onTopFilterSearch(filters: any) {
+    console.log('Top filters search:', filters);
+
+    this.topFilters = filters;
+
+    const finalFilters = {
+      ...this.topFilters,
+      ...this.moreFilters
+    };
+
+    console.log('Combined filters:', finalFilters);
+
+    this.facade.updateFilters(finalFilters);
   }
 
   ngOnDestroy() {

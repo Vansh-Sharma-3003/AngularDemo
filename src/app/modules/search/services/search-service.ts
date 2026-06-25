@@ -26,10 +26,10 @@ export class SearchService {
     });
   }
 
-  loadFilterData(){
-    this.searchAPI.getFilterData().subscribe({
+  loadTableData(){
+    this.searchAPI.getTableData().subscribe({
       next: (filterData: MOCK_TABLE_DATA[]) => {
-        this.searchFacade.setFilterData(filterData);
+        this.searchFacade.setTableData(filterData);
       },
 
       error: (error)=> {
