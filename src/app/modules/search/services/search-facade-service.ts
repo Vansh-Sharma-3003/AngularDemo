@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FilterConfig } from '../../../model/ui/form-control';
-import { MOCK_TABLE_DATA } from '../../../model/ui/table-data';
+import { MOCK_TABLE_DATA, SearchFilters } from '../../../model/ui/table-data';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +14,12 @@ export class SearchFacadeService {
   private tableData = new BehaviorSubject<MOCK_TABLE_DATA[] | null>(null);
   tableData$: Observable<MOCK_TABLE_DATA[] | null> = this.tableData.asObservable();
 
-  private filtersSubject = new BehaviorSubject<any>({});
+  private filtersSubject = new BehaviorSubject<SearchFilters>({});
   filters$ = this.filtersSubject.asObservable();
 
-  private originalDataSubject = new BehaviorSubject<any[]>([]);
+  private originalDataSubject = new BehaviorSubject<MOCK_TABLE_DATA[]>([]);
 
-  private filteredDataSubject = new BehaviorSubject<any[]>([]);
+  private filteredDataSubject = new BehaviorSubject<MOCK_TABLE_DATA[]>([]);
   filteredData$ = this.filteredDataSubject.asObservable();
 
   setFilterConfig(filterConfig: FilterConfig) {
@@ -30,43 +30,33 @@ export class SearchFacadeService {
     this.tableData.next(filterData);
   }
 
-  setData(data: any[]) {
+  setData(data: MOCK_TABLE_DATA[]) {
     this.originalDataSubject.next(data);
-    this.filteredDataSubject.next(data); 
     this.applyFilters();
   }
 
-  updateFilters(filters: any) {
-    console.log('updateFilters called', filters);
-
-    const current = this.filtersSubject.value;
-
-    this.filtersSubject.next({
-      ...current,
-      ...filters
-    });
-
+  updateFilters(filters: SearchFilters) {
+    this.filtersSubject.next(filters);
     this.applyFilters();
   }
 
   private applyFilters() {
-    console.log('applyFilters running');
+
     const data = this.originalDataSubject.value;
-    const f = this.filtersSubject.value;
+    const filters = this.filtersSubject.value;
 
-    console.log('Data:', data.length);
-    console.log('Filters:', f);
+    const filtered = data.filter(item => 
+      this.matchesFilters(item, filters)
+    );
 
-    const filtered = data.filter(item => {
+    this.filteredDataSubject.next(filtered);
+  }
 
-      console.log(
-        'Comparing:',
-        item.searchType,
-        'with',
-        f.searchType
-      );
-
-      return (
+  private matchesFilters(
+    item: MOCK_TABLE_DATA,
+    f: SearchFilters
+  ): boolean {
+    return (
         (!f.searchType || item.searchType === f.searchType) &&
         (!f.status || item.status === f.status) &&
         (!f.searchResult || item.searchResult === f.searchResult) &&
@@ -81,10 +71,6 @@ export class SearchFacadeService {
         (!f.responseType ||
           item.responseType?.toLowerCase().includes(f.responseType.toLowerCase()))
       );
-    });
-
-    console.log('Filtered:', filtered);
-
-    this.filteredDataSubject.next(filtered);
   }
 }
+

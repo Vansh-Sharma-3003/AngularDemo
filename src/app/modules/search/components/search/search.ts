@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSidenavContainer } from "@angular/material/sidenav";
@@ -27,6 +27,12 @@ export class Search {
   topFilters: any = {};
   moreFilters: any = {};
 
+  @ViewChild(TopFilters)
+topFiltersComponent!: TopFilters;
+
+@ViewChild(MoreFilters)
+moreFiltersComponent!: MoreFilters;
+
   ELEMENT_DATA: MOCK_TABLE_DATA[] | null = [];
 
   pagedData: MOCK_TABLE_DATA[] | null = [];
@@ -52,7 +58,6 @@ export class Search {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (filterConfig) => {
-          console.log("filter Config data of facade :", filterConfig);
           this.filterConfig = filterConfig;
         },
 
@@ -63,17 +68,7 @@ export class Search {
 
     this.facade.tableData$
       .pipe(takeUntil(this.destroy$))
-      // .subscribe({
-      //   next: (tableData) => {
-      //     console.log("filter table data of facade :", tableData);
-      //     this.ELEMENT_DATA = tableData;
-      //   },
-
-      //   error: (error) => {
-      //     console.error('Error receiving Filter Config:', error);
-      //   }
       .subscribe(data => {
-        console.log("filter data of facade :", data);
         this.facade.setData(data ?? []);
       });
 
@@ -81,10 +76,8 @@ export class Search {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data) => {
-
-          console.log('GRID UPDATE:', data);
           this.pagedData = data;
-          this.ELEMENT_DATA = [...(data ?? [])].slice(0, 10);
+          this.ELEMENT_DATA = (data ?? []).slice(0, 10);
         },
         error: (error) => {
           console.error('Error receiving filtered data:', error);
@@ -111,22 +104,16 @@ export class Search {
   }
 
   onMoreFilterApply(filters: any) {
-    console.log('More filters saved:', filters);
-
     this.moreFilters = filters;
   }
 
   onTopFilterSearch(filters: any) {
-    console.log('Top filters search:', filters);
-
     this.topFilters = filters;
 
     const finalFilters = {
       ...this.topFilters,
       ...this.moreFilters
     };
-
-    console.log('Combined filters:', finalFilters);
 
     this.facade.updateFilters(finalFilters);
   }
@@ -135,4 +122,15 @@ export class Search {
     this.destroy$.next();
     this.destroy$.complete();
   }
+
+  onReset() {
+  this.topFiltersComponent.resetForm();
+  this.moreFiltersComponent.resetForm();
+
+  this.topFilters = {};
+  this.moreFilters = {};
+
+  this.facade.updateFilters({});
 }
+}
+

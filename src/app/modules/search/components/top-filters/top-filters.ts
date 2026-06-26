@@ -22,6 +22,8 @@ export class TopFilters {
 
   @Output() topFilterChange = new EventEmitter<any>();
 
+  @Output() reset = new EventEmitter<void>();
+
   topFilterForm: FormGroup = new FormGroup({
     searchType: new FormControl(null),
     nameId: new FormControl(null),
@@ -43,9 +45,15 @@ export class TopFilters {
 
 
   onSubmit() {
-    
+
     console.log('Search value:', this.topFilterForm.value);
     this.topFilterChange.emit(this.topFilterForm.value);
   }
 
+  resetForm() {
+    this.topFilterForm.reset();
+    this.topFilterChange.emit(this.topFilterForm.value);
+  }
+
 }
+

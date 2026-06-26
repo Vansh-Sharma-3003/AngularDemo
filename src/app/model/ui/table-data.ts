@@ -11,3 +11,17 @@ export interface MOCK_TABLE_DATA {
   responseType: string;
   status: string;
 }
+
+
+export interface SearchFilters {
+  searchType?: string;
+  status?: string;
+  searchResult?: string;
+  responseId?: string;
+  nameId?: string;
+  leader?: string;
+  teamLeader?: string;
+  queueTpye?: string;
+  feedback?: string;
+  responseType?: string;
+}
