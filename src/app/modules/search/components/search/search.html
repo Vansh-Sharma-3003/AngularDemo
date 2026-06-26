@@ -5,13 +5,14 @@
                 <div class="top-filters">
                     <app-top-filters 
                         [filterConfig]="filterConfig"
-                        (topFilterChange)="onTopFilterSearch($event)">
+                        (topFilterChange)="onTopFilterSearch($event)"
+                        (reset)="onReset()">
                     </app-top-filters>
                 </div>
                 <div class="more-filters">
                     <app-more-filters 
                         [filterConfig]="filterConfig"
-                        (moreFilterChange)="onMoreFilterApply($event)">
+                        (applyFilters)="onMoreFilterApply($event)">
                     </app-more-filters>
                 </div>
             </div>

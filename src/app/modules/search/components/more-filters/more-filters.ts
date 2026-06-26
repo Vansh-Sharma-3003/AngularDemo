@@ -23,11 +23,11 @@ import { MatBadgeModule } from '@angular/material/badge';
 })
 export class MoreFilters {
 
-  applyFilters = 0;
+  applyFiltersCount = 0;
 
   @Input() filterConfig: FilterConfig | null = null;
 
-  @Output() moreFilterChange = new EventEmitter<any>();
+  @Output() applyFilters = new EventEmitter<any>();
 
   @ViewChild('drawer') drawer!: MatDrawer;
 
@@ -60,14 +60,14 @@ export class MoreFilters {
   onApply(): void {
     const formValues = this.moreFilterForm.value;
 
-    this.applyFilters = Object.values(formValues).filter(value => {
+    this.applyFiltersCount = Object.values(formValues).filter(value => {
       return value !== null &&
         value !== undefined &&
         value !== '' &&
         !(Array.isArray(value) && value.length === 0);
     }).length;
 
-    this.moreFilterChange.emit(this.moreFilterForm.value);
+    this.applyFilters.emit(this.moreFilterForm.value);
     this.drawer.close();
   }
 
@@ -77,7 +77,14 @@ export class MoreFilters {
 
   onClear(): void {
     this.moreFilterForm.reset();
-    this.applyFilters = 0;
+    this.applyFiltersCount = 0;
     console.log(this.moreFilterForm.value);
   }
+
+  resetForm() {
+    this.moreFilterForm.reset();
+    this.applyFiltersCount = 0;
+
+  }
 }
+
