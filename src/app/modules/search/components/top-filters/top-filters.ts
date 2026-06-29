@@ -4,6 +4,8 @@ import { InputComponent } from '../../../../shared/components/ui/form-controls/i
 import { SelectComponent } from '../../../../shared/components/ui/form-controls/select-component/select-component';
 import { CommonModule } from '@angular/common';
 import { FilterConfig } from '../../../../model/ui/form-control';
+import { SearchFacadeService } from '../../services/search-facade-service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-top-filters',
@@ -16,13 +18,11 @@ import { FilterConfig } from '../../../../model/ui/form-control';
   templateUrl: './top-filters.html',
   styleUrl: './top-filters.css',
 })
+
 export class TopFilters {
 
   @Input() filterConfig: FilterConfig | null = null;
 
-  @Output() topFilterChange = new EventEmitter<any>();
-
-  @Output() reset = new EventEmitter<void>();
 
   topFilterForm: FormGroup = new FormGroup({
     searchType: new FormControl(null),
@@ -32,6 +32,21 @@ export class TopFilters {
     responseId: new FormControl(null),
   });
 
+  private destroy$ = new Subject<void>();
+
+  constructor(private facade: SearchFacadeService) { }
+
+  ngOnInit() {
+    this.setUpSubscriber();
+  }
+
+  setUpSubscriber() {
+    this.facade.reset$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.onReset();
+      });
+  }
 
   get topFilters() {
     return {
@@ -45,15 +60,22 @@ export class TopFilters {
 
 
   onSubmit() {
-
-    console.log('Search value:', this.topFilterForm.value);
-    this.topFilterChange.emit(this.topFilterForm.value);
+    this.facade.setTopFilters(this.topFilterForm.getRawValue());
+    this.facade.setSearch();
   }
 
-  resetForm() {
+  onReset() {
     this.topFilterForm.reset();
-    this.topFilterChange.emit(this.topFilterForm.value);
+    this.facade.setTopFilters(this.topFilterForm.value);
   }
 
-}
+  onResetClick() {
+    this.facade.setReset();
+  }
 
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}

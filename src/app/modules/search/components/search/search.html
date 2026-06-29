@@ -3,31 +3,38 @@
         <mat-sidenav-container>
             <div class="search-form-container">
                 <div class="top-filters">
-                    <app-top-filters 
-                        [filterConfig]="filterConfig"
-                        (topFilterChange)="onTopFilterSearch($event)"
-                        (reset)="onReset()">
+                    <app-top-filters [filterConfig]="filterConfig">
                     </app-top-filters>
                 </div>
                 <div class="more-filters">
-                    <app-more-filters 
-                        [filterConfig]="filterConfig"
-                        (applyFilters)="onMoreFilterApply($event)">
+                    <app-more-filters [filterConfig]="filterConfig">
                     </app-more-filters>
                 </div>
             </div>
         </mat-sidenav-container>
 
-        <div class="data-table">
-            <app-grid [ELEMENT_DATA]="ELEMENT_DATA ?? []"></app-grid>
-        </div>
+        <!-- @if(ELEMENT_DATA.length >0){} -->
+            <div class="data-table">
+                <app-grid [ELEMENT_DATA]="ELEMENT_DATA"
+                ></app-grid>
+            </div>
+        
+        <!-- @else{
+            <div class="data-not-come">
+                <p>Search Data Not Present</p>
+            </div>
+        } -->
 
-        <div class="pagenator">
-            <app-pagenator [length]="(pagedData ?? []).length"
-                [pageSize]="10"
-                [pageSizeOptions]="[10,20,30,40,50]"
-                (pageChanged)="onPageChange($event)">
-            </app-pagenator>
-        </div>
+        @if(ELEMENT_DATA.length != 0){
+            <div class="pagenator">
+                <app-pagenator [length]="pagedData?.length ?? 0" 
+                    [pageIndex]="pageState.pageIndex"
+                    [pageSize]="pageState.pageSize" 
+                    [pageSizeOptions]="[10,20,30,40,50]"
+                    (pageChanged)="onPageChange($event)">
+                </app-pagenator>
+            </div>
+        }
+
     </div>
 </div>

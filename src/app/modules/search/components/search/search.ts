@@ -14,8 +14,6 @@ import { PageEvent } from '@angular/material/paginator';
 import { MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
 
 
-
-
 @Component({
   selector: 'app-search',
   imports: [ReactiveFormsModule, MatMenuModule, MatSidenavContainer, MoreFilters, TopFilters, Grid, Pagenator],
@@ -24,20 +22,13 @@ import { MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
 })
 export class Search {
 
-  topFilters: any = {};
-  moreFilters: any = {};
-
-  @ViewChild(TopFilters)
-topFiltersComponent!: TopFilters;
-
-@ViewChild(MoreFilters)
-moreFiltersComponent!: MoreFilters;
-
-  ELEMENT_DATA: MOCK_TABLE_DATA[] | null = [];
+  ELEMENT_DATA: MOCK_TABLE_DATA[] = [];
 
   pagedData: MOCK_TABLE_DATA[] | null = [];
 
   filterConfig: FilterConfig | null = null;
+
+  pageState !: PageEvent;
 
   private destroy$ = new Subject<void>();
 
@@ -47,10 +38,11 @@ moreFiltersComponent!: MoreFilters;
   ) { }
 
   ngOnInit() {
+    this.pageState = this.facade.getPageState();
     this.setUpSubscriber();
     this.searchService.loadFilterConfig();
     this.searchService.loadTableData();
-    
+
   }
 
   setUpSubscriber() {
@@ -77,45 +69,62 @@ moreFiltersComponent!: MoreFilters;
       .subscribe({
         next: (data) => {
           this.pagedData = data;
-          this.ELEMENT_DATA = (data ?? []).slice(0, 10);
+          this.updateTableData();
         },
         error: (error) => {
           console.error('Error receiving filtered data:', error);
         }
       });
-  }
 
+    this.facade.pageState$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(page =>{
+
+        this.pageState = page;
+
+        this.updateTableData();
+      });
+
+    this.facade.search$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+
+        const finalFilters = {
+          ...this.facade.getTopFilters(),
+          ...this.facade.getMoreFilters()
+        };
+
+        this.facade.resetPage();
+        this.facade.updateFilters(finalFilters);
+
+      });
+
+    this.facade.reset$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.facade.setTopFilters({});
+        this.facade.setMoreFilters({});
+
+        this.facade.resetPage();
+        this.facade.updateFilters({});
+
+      });
+
+  }
 
   onPageChange(event: PageEvent) {
-    console.log(event);
-    const start =
-      event.pageIndex * event.pageSize;
-
-    const end =
-      start + event.pageSize;
-
-
-    this.ELEMENT_DATA =
-      (this.pagedData ?? []).slice(start, end);
-    console.log(this.ELEMENT_DATA);
-
-    console.log(start, end);
-    console.log((this.pagedData ?? []).slice(start, end));
+    this.facade.setPageState(event);
   }
 
-  onMoreFilterApply(filters: any) {
-    this.moreFilters = filters;
-  }
+  private updateTableData() {
 
-  onTopFilterSearch(filters: any) {
-    this.topFilters = filters;
+    const page = this.facade.getPageState();
 
-    const finalFilters = {
-      ...this.topFilters,
-      ...this.moreFilters
-    };
+    const start = page.pageIndex * page.pageSize;
+    const end = start + page.pageSize;
 
-    this.facade.updateFilters(finalFilters);
+    this.ELEMENT_DATA = (this.pagedData ?? []).slice(start, end);
+
   }
 
   ngOnDestroy() {
@@ -123,14 +132,5 @@ moreFiltersComponent!: MoreFilters;
     this.destroy$.complete();
   }
 
-  onReset() {
-  this.topFiltersComponent.resetForm();
-  this.moreFiltersComponent.resetForm();
-
-  this.topFilters = {};
-  this.moreFilters = {};
-
-  this.facade.updateFilters({});
-}
 }
 

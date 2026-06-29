@@ -7,6 +7,8 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { SelectComponent } from '../../../../shared/components/ui/form-controls/select-component/select-component';
 import { FilterConfig } from '../../../../model/ui/form-control';
 import { MatBadgeModule } from '@angular/material/badge';
+import { SearchFacadeService } from '../../services/search-facade-service';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-more-filters',
   imports: [
@@ -27,8 +29,6 @@ export class MoreFilters {
 
   @Input() filterConfig: FilterConfig | null = null;
 
-  @Output() applyFilters = new EventEmitter<any>();
-
   @ViewChild('drawer') drawer!: MatDrawer;
 
   moreFilterForm: FormGroup = new FormGroup({
@@ -40,8 +40,22 @@ export class MoreFilters {
     feedback: new FormControl(null)
   });
 
+    private destroy$ = new Subject<void>();
+  
 
+  constructor(private facade: SearchFacadeService) { }
 
+  ngOnInit() {
+    this.setUpSubscriber();
+  }
+
+  setUpSubscriber() {
+    this.facade.reset$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.onClear();
+      });
+  }
 
   get moreFilters() {
     return {
@@ -67,7 +81,7 @@ export class MoreFilters {
         !(Array.isArray(value) && value.length === 0);
     }).length;
 
-    this.applyFilters.emit(this.moreFilterForm.value);
+    this.facade.setMoreFilters(this.moreFilterForm.getRawValue());
     this.drawer.close();
   }
 
@@ -78,13 +92,13 @@ export class MoreFilters {
   onClear(): void {
     this.moreFilterForm.reset();
     this.applyFiltersCount = 0;
-    console.log(this.moreFilterForm.value);
+    this.facade.setMoreFilters(this.moreFilterForm.value);
+  } 
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
-  resetForm() {
-    this.moreFilterForm.reset();
-    this.applyFiltersCount = 0;
-
-  }
 }
 
