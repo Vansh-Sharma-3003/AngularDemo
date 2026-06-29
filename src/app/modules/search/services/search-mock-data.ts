@@ -3,7 +3,7 @@ import { MOCK_TABLE_DATA } from "../../../model/ui/table-data";
 
 
 export const SEARCH_FIELDS_MOCK_DATA: FilterConfig = {
-    leader: {
+  leader: {
     sl: "Scoring Leader",
     gsl: "Group Scoring Leader",
     tl: "Team Leader",
@@ -48,7 +48,7 @@ export const SEARCH_FIELDS_MOCK_DATA: FilterConfig = {
 }
 
 export const TABLE_DATA: MOCK_TABLE_DATA[] = [
-    {
+  {
     responseId: "RSP-1001",
     candidateId: "CAND-501",
     name: "Aarav Sharma",
@@ -177,5 +177,135 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     searchType: "es",
     responseType: "Manual",
     status: "a"
-  }
+  },
+  {
+    responseId: "RSP-1011",
+    candidateId: "CAND-511",
+    name: "Rahul Kapoor",
+    leader: "gsl",
+    teamLeader: "tl2",
+    queueType: "oq",
+    feedback: "p",
+    searchResult: "mf",
+    searchType: "fs",
+    responseType: "Automatic",
+    status: "a"
+  },
+  {
+    responseId: "RSP-1012",
+    candidateId: "CAND-512",
+    name: "Neha Malhotra",
+    leader: "sl",
+    teamLeader: "tl3",
+    queueType: "iq",
+    feedback: "n",
+    searchResult: "pm",
+    searchType: "ws",
+    responseType: "Manual",
+    status: "p"
+  },
+  {
+    responseId: "RSP-1013",
+    candidateId: "CAND-513",
+    name: "Arjun Khanna",
+    leader: "tl",
+    teamLeader: "tl1",
+    queueType: "pq",
+    feedback: "neg",
+    searchResult: "nm",
+    searchType: "es",
+    responseType: "Automatic",
+    status: "i"
+  },
+  {
+    responseId: "RSP-1014",
+    candidateId: "CAND-514",
+    name: "Pooja Mishra",
+    leader: "sl",
+    teamLeader: "tl2",
+    queueType: "iq",
+    feedback: "p",
+    searchResult: "mf",
+    searchType: "fs",
+    responseType: "Manual",
+    status: "a"
+  },
+  {
+    responseId: "RSP-1015",
+    candidateId: "CAND-515",
+    name: "Karan Bansal",
+    leader: "gsl",
+    teamLeader: "tl3",
+    queueType: "oq",
+    feedback: "n",
+    searchResult: "pm",
+    searchType: "ws",
+    responseType: "Automatic",
+    status: "c"
+  },
+  {
+    responseId: "RSP-1016",
+    candidateId: "CAND-516",
+    name: "Simran Kaur",
+    leader: "tl",
+    teamLeader: "tl1",
+    queueType: "pq",
+    feedback: "neg",
+    searchResult: "nm",
+    searchType: "es",
+    responseType: "Manual",
+    status: "p"
+  },
+  {
+    responseId: "RSP-1017",
+    candidateId: "CAND-517",
+    name: "Yash Agarwal",
+    leader: "sl",
+    teamLeader: "tl2",
+    queueType: "iq",
+    feedback: "p",
+    searchResult: "mf",
+    searchType: "fs",
+    responseType: "Automatic",
+    status: "a"
+  },
+  {
+    responseId: "RSP-1018",
+    candidateId: "CAND-518",
+    name: "Ritika Jain",
+    leader: "gsl",
+    teamLeader: "tl1",
+    queueType: "oq",
+    feedback: "n",
+    searchResult: "pm",
+    searchType: "ws",
+    responseType: "Manual",
+    status: "i"
+  },
+  {
+    responseId: "RSP-1019",
+    candidateId: "CAND-519",
+    name: "Siddharth Roy",
+    leader: "tl",
+    teamLeader: "tl3",
+    queueType: "pq",
+    feedback: "neg",
+    searchResult: "nm",
+    searchType: "es",
+    responseType: "Automatic",
+    status: "c"
+  },
+  {
+    responseId: "RSP-1020",
+    candidateId: "CAND-520",
+    name: "Nisha Choudhary",
+    leader: "sl",
+    teamLeader: "tl2",
+    queueType: "iq",
+    feedback: "p",
+    searchResult: "mf",
+    searchType: "fs",
+    responseType: "Manual",
+    status: "a"
+  },
 ];

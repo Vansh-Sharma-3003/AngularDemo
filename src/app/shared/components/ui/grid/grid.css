@@ -6,3 +6,13 @@
 .search-data-table{
     overflow-x: auto;
 }
+
+
+.data-not-come{
+    margin: 20px;
+    padding: 10px;
+    height: fit-content;
+    font-size: xxx-large;
+    justify-items: center;
+    color: #b5b5b5;
+}

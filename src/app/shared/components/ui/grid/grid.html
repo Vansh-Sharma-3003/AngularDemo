@@ -1,6 +1,5 @@
 <div class="search-data-table">
-  <table mat-table [dataSource]="dataSource" matSort
-    (matSortChange)="announceSortChange($event)"
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
     class="mat-elevation-z8">
 
     <!-- Response ID -->
@@ -120,4 +119,10 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
+
+  @if(ELEMENT_DATA.length === 0){
+    <div class="data-not-come">
+      <p>Data Not Found</p>
+    </div>
+  }
 </div>
