@@ -8,7 +8,9 @@
         Response ID
       </th>
       <td mat-cell *matCellDef="let element">
-        {{ element.responseId }}
+        <a [routerLink]="['/response',element.responseId,FILTERS.status[element.status]]" class="response-link">
+          {{ element.responseId }}
+        </a>
       </td>
     </ng-container>
 
@@ -98,7 +100,7 @@
         Response Type
       </th>
       <td mat-cell *matCellDef="let element">
-        {{ element.responseType }}
+          {{ element.responseType }}
       </td>
     </ng-container>
 

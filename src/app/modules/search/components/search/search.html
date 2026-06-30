@@ -13,17 +13,9 @@
             </div>
         </mat-sidenav-container>
 
-        <!-- @if(ELEMENT_DATA.length >0){} -->
-            <div class="data-table">
-                <app-grid [ELEMENT_DATA]="ELEMENT_DATA"
-                ></app-grid>
-            </div>
-        
-        <!-- @else{
-            <div class="data-not-come">
-                <p>Search Data Not Present</p>
-            </div>
-        } -->
+        <div class="data-table">
+            <app-grid [ELEMENT_DATA]="ELEMENT_DATA"></app-grid>
+        </div>
 
         @if(ELEMENT_DATA.length != 0){
             <div class="pagenator">

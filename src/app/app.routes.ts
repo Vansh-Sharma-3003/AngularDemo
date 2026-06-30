@@ -3,6 +3,7 @@ import { Feedback } from './modules/feedback/feedback';
 import { Admin } from './modules/admin/admin';
 import { Home } from './modules/home/components/home/home';
 import { Search } from './modules/search/components/search/search';
+import { SearchResponseViewer } from './modules/search/components/search-response-viewer/search-response-viewer';
 
 export const routes: Routes = [
     {
@@ -16,5 +17,8 @@ export const routes: Routes = [
     },
     {
         path:"search",component: Search
+    },
+    {
+        path:"response/:responseId/:responseStatus",component: SearchResponseViewer
     }
 ];
