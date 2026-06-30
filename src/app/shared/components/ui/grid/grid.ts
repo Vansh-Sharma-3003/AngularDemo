@@ -4,10 +4,11 @@ import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
 import { SEARCH_FIELDS_MOCK_DATA } from '../../../../modules/search/services/search-mock-data';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-grid',
-  imports: [MatTableModule, MatSortModule],
+  imports: [MatTableModule, MatSortModule, RouterLink],
   templateUrl: './grid.html',
   styleUrl: './grid.css',
 })

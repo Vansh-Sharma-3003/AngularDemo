@@ -1,0 +1,26 @@
+.response-viewer-footer{
+    position: absolute;
+    height: 50px;
+    bottom: 20px;
+    width: calc(100vw - 280px);
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;              
+    align-items: center;
+}
+
+.footer-buttons{
+    min-width: 70px;
+    background-color: white;
+    color: #1a73e8;
+    border-radius: 4px;
+    border: 1px solid #1a73e8;
+    margin-right: 20px;
+}
+
+.buttons {
+    display: flex;
+    margin-left: auto;
+    height: 70%;
+    gap: 10px;
+}

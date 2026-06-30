@@ -9,10 +9,11 @@
 
 
 .data-not-come{
-    margin: 20px;
     padding: 10px;
-    height: fit-content;
-    font-size: xxx-large;
-    justify-items: center;
-    color: #b5b5b5;
+}
+
+.response-link{
+    color: #1976d2;
+    text-decoration: none;
+    cursor: pointer;
 }
