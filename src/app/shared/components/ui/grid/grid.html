@@ -8,7 +8,7 @@
         Response ID
       </th>
       <td mat-cell *matCellDef="let element">
-        <a [routerLink]="['/response',element.responseId,FILTERS.status[element.status]]" class="response-link">
+        <a (click)="onClick(element.responseId,FILTERS.status[element.status])" class="response-link">
           {{ element.responseId }}
         </a>
       </td>

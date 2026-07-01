@@ -49,7 +49,7 @@ export const SEARCH_FIELDS_MOCK_DATA: FilterConfig = {
 
 export const TABLE_DATA: MOCK_TABLE_DATA[] = [
   {
-    responseId: "RSP-1001",
+    responseId: "1001",
     candidateId: "CAND-501",
     name: "Aarav Sharma",
     leader: "sl",
@@ -62,7 +62,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "a"
   },
   {
-    responseId: "RSP-1002",
+    responseId: "1002",
     candidateId: "CAND-502",
     name: "Priya Verma",
     leader: "gsl",
@@ -75,7 +75,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "p"
   },
   {
-    responseId: "RSP-1003",
+    responseId: "1003",
     candidateId: "CAND-503",
     name: "Rohan Mehta",
     leader: "tl",
@@ -88,7 +88,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "i"
   },
   {
-    responseId: "RSP-1004",
+    responseId: "1004",
     candidateId: "CAND-504",
     name: "Sneha Iyer",
     leader: "sl",
@@ -101,7 +101,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "a"
   },
   {
-    responseId: "RSP-1005",
+    responseId: "1005",
     candidateId: "CAND-505",
     name: "Kabir Singh",
     leader: "gsl",
@@ -114,7 +114,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "c"
   },
   {
-    responseId: "RSP-1006",
+    responseId: "1006",
     candidateId: "CAND-506",
     name: "Ananya Das",
     leader: "tl",
@@ -127,7 +127,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "p"
   },
   {
-    responseId: "RSP-1007",
+    responseId: "1007",
     candidateId: "CAND-507",
     name: "Vivaan Gupta",
     leader: "sl",
@@ -140,7 +140,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "a"
   },
   {
-    responseId: "RSP-1008",
+    responseId: "1008",
     candidateId: "CAND-508",
     name: "Ishita Rao",
     leader: "gsl",
@@ -153,7 +153,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "i"
   },
   {
-    responseId: "RSP-1009",
+    responseId: "1009",
     candidateId: "CAND-509",
     name: "Aditya Nair",
     leader: "tl",
@@ -166,7 +166,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "c"
   },
   {
-    responseId: "RSP-1010",
+    responseId: "1010",
     candidateId: "CAND-510",
     name: "Meera Joshi",
     leader: "sl",
@@ -179,7 +179,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "a"
   },
   {
-    responseId: "RSP-1011",
+    responseId: "1011",
     candidateId: "CAND-511",
     name: "Rahul Kapoor",
     leader: "gsl",
@@ -192,7 +192,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "a"
   },
   {
-    responseId: "RSP-1012",
+    responseId: "1012",
     candidateId: "CAND-512",
     name: "Neha Malhotra",
     leader: "sl",
@@ -205,7 +205,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "p"
   },
   {
-    responseId: "RSP-1013",
+    responseId: "1013",
     candidateId: "CAND-513",
     name: "Arjun Khanna",
     leader: "tl",
@@ -218,7 +218,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "i"
   },
   {
-    responseId: "RSP-1014",
+    responseId: "1014",
     candidateId: "CAND-514",
     name: "Pooja Mishra",
     leader: "sl",
@@ -231,7 +231,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "a"
   },
   {
-    responseId: "RSP-1015",
+    responseId: "1015",
     candidateId: "CAND-515",
     name: "Karan Bansal",
     leader: "gsl",
@@ -244,7 +244,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "c"
   },
   {
-    responseId: "RSP-1016",
+    responseId: "1016",
     candidateId: "CAND-516",
     name: "Simran Kaur",
     leader: "tl",
@@ -257,7 +257,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "p"
   },
   {
-    responseId: "RSP-1017",
+    responseId: "1017",
     candidateId: "CAND-517",
     name: "Yash Agarwal",
     leader: "sl",
@@ -270,7 +270,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "a"
   },
   {
-    responseId: "RSP-1018",
+    responseId: "1018",
     candidateId: "CAND-518",
     name: "Ritika Jain",
     leader: "gsl",
@@ -283,7 +283,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "i"
   },
   {
-    responseId: "RSP-1019",
+    responseId: "1019",
     candidateId: "CAND-519",
     name: "Siddharth Roy",
     leader: "tl",
@@ -296,7 +296,7 @@ export const TABLE_DATA: MOCK_TABLE_DATA[] = [
     status: "c"
   },
   {
-    responseId: "RSP-1020",
+    responseId: "1020",
     candidateId: "CAND-520",
     name: "Nisha Choudhary",
     leader: "sl",

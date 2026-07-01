@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
-import { ResponseViewerHeader } from '../../../../shared/components/ui/response-viewer-header/response-viewer-header';
-import { ResponseViewerContent } from '../../../../shared/components/ui/response-viewer-content/response-viewer-content';
-import { ResponseViewerFooter } from '../../../../shared/components/ui/response-viewer-footer/response-viewer-footer';
-import { ActivatedRoute } from '@angular/router';
+import { ResponseViewer } from "../../../../shared/components/ui/response-viewer/response-viewer";
 
 @Component({
   selector: 'app-search-response-viewer',
-  imports: [ResponseViewerHeader, ResponseViewerContent, ResponseViewerFooter],
+  imports: [ ResponseViewer],
   templateUrl: './search-response-viewer.html',
   styleUrl: './search-response-viewer.css',
 })
 export class SearchResponseViewer {
 
-  responseStatus:string | null='';
-
-  constructor(private route: ActivatedRoute) { }
+  responseStatus: string | null = '';
+  responseId: string | null = '';
 
   ngOnInit(): void {
-    this.responseStatus = this.route.snapshot.paramMap.get('responseStatus');
+    const state = history.state;
+    console.log(state);
+
+    this.responseId = state.responseId;
+    this.responseStatus = state.responseStatus;
+
+    console.log(this.responseStatus);
   }
-  
+
 }

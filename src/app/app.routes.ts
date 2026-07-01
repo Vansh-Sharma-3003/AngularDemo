@@ -19,6 +19,6 @@ export const routes: Routes = [
         path:"search",component: Search
     },
     {
-        path:"response/:responseId/:responseStatus",component: SearchResponseViewer
+        path:"response",component: SearchResponseViewer
     }
 ];

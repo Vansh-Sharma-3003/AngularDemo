@@ -1,0 +1,10 @@
+.response-viewer-rater-score-panel {
+    height: 66vh;
+    width: 20vw;
+    padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    background-color:#fff7ed;
+    border-radius: 8px;
+}

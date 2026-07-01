@@ -1,0 +1,7 @@
+export enum ResponseViewerTabName {
+    PROMPT = 'PROMPT',
+    SCORING_GUIDE = 'SCORING GUIDE',
+    SCORING_NOTES = 'SCORING NOTES',
+    BENCHMARK = 'BENCHMARK',
+    RESPONSE = 'RESPONSE'
+}
