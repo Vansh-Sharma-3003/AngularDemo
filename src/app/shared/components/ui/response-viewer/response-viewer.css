@@ -1,0 +1,10 @@
+.response-viewer-container {
+    position: relative;
+    height: 90%;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #b2ddec;
+    border-radius: 8px;
+}

@@ -1,0 +1,5 @@
+<div class="response-viewer-container">
+    <app-response-viewer-tab (tabChanged)="onTabChanged($event)"></app-response-viewer-tab>
+    <app-response-viewer-content [tabName]="activeTab"></app-response-viewer-content>
+</div>
+    <app-response-viewer-footer></app-response-viewer-footer>

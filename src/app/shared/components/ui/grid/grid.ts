@@ -4,11 +4,11 @@ import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
 import { SEARCH_FIELDS_MOCK_DATA } from '../../../../modules/search/services/search-mock-data';
-import { RouterLink } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-grid',
-  imports: [MatTableModule, MatSortModule, RouterLink],
+  imports: [MatTableModule, MatSortModule],
   templateUrl: './grid.html',
   styleUrl: './grid.css',
 })
@@ -16,30 +16,32 @@ export class Grid {
 
   private _liveAnnouncer = inject(LiveAnnouncer);
 
-  @Input() ELEMENT_DATA: MOCK_TABLE_DATA[]=[];
+  @Input() ELEMENT_DATA: MOCK_TABLE_DATA[] = [];
 
   readonly FILTERS = SEARCH_FIELDS_MOCK_DATA;
 
   displayedColumns: string[] = [
-  'responseId',
-  'candidateId',
-  'name',
-  'leader',
-  'teamLeader',
-  'queueType',
-  'feedback',
-  'searchResult',
-  'searchType',
-  'responseType',
-  'status'
-];
+    'responseId',
+    'candidateId',
+    'name',
+    'leader',
+    'teamLeader',
+    'queueType',
+    'feedback',
+    'searchResult',
+    'searchType',
+    'responseType',
+    'status'
+  ];
 
   dataSource = new MatTableDataSource<MOCK_TABLE_DATA>();
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit(){
-    this.dataSource.data=this.ELEMENT_DATA;
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.dataSource.data = this.ELEMENT_DATA;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -60,4 +62,12 @@ export class Grid {
     }
   }
 
+  onClick(responseId: string, responseStatus: string) {
+    this.router.navigate(['/response'], {
+      state: {
+        responseId: responseId,
+        responseStatus: responseStatus
+      }
+    });
+  }
 }

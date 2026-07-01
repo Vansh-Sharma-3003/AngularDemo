@@ -1,0 +1,17 @@
+<div class="response-viewer-tabs">
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+        @for (tab of tabs; track tab) {
+        <a mat-tab-link [active]="activeTab === tab" [ngClass]="{'active-tab': activeTab === tab}"
+            (click)="activeTab = tab; tabChanged.emit(tab)">
+            {{ tab }}
+        </a>
+        }
+    </nav>
+    <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+    <div class="show-status">
+        <p>ResponseId </p>
+        <p>Status </p>
+    </div>
+
+</div>

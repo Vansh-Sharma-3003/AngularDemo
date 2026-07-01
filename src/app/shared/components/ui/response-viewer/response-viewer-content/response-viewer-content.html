@@ -1,0 +1,43 @@
+<div class="response-viewer-content">
+        <ng-container *ngIf="tabName === ResponseViewerTabName.PROMPT">
+            <div class="response-viewer">
+                <app-response-viewer-prompt></app-response-viewer-prompt>
+            </div>
+            <div class="response-viewer-rater-score-panel">
+                    <app-response-viewer-rater-score-panel></app-response-viewer-rater-score-panel>
+            </div>
+
+        </ng-container>
+
+        <ng-container *ngIf="tabName === ResponseViewerTabName.SCORING_GUIDE">
+            <div class="response-viewer">
+                <app-response-viewer-scoring-guide></app-response-viewer-scoring-guide>
+            </div>
+            <div class="response-viewer-rater-score-panel">
+                    <app-response-viewer-rater-score-panel></app-response-viewer-rater-score-panel>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="tabName === ResponseViewerTabName.SCORING_NOTES">
+            <div class="response-viewer">
+                <app-response-viewer-scoring-notes></app-response-viewer-scoring-notes>
+            </div>
+            <div class="response-viewer-rater-score-panel">
+                    <app-response-viewer-rater-score-panel></app-response-viewer-rater-score-panel>
+            </div>      
+
+        </ng-container>
+
+        <ng-container *ngIf="tabName === ResponseViewerTabName.RESPONSE || tabName === null">
+            <div class="response-viewer">
+                <app-response-viewer-response></app-response-viewer-response>
+            </div>
+            <div class="response-viewer-rater-score-panel">
+                    <app-response-viewer-rater-score-panel></app-response-viewer-rater-score-panel>
+            </div>  
+        </ng-container>
+
+        <ng-container *ngIf="tabName === ResponseViewerTabName.BENCHMARK">
+            <app-response-viewer-benchmark></app-response-viewer-benchmark>
+        </ng-container>
+</div>
