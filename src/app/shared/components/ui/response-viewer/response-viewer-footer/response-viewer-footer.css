@@ -1,5 +1,6 @@
 .response-viewer-footer{
     position: absolute;
+    bottom: 10px;
     height: 8%;
     width: calc(100vw - 280px);
     padding: 5px;
