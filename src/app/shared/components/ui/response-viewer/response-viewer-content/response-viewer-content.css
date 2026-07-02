@@ -2,14 +2,14 @@
     display: flex;
     height: 100%;
     width: 100%;
-    padding: 20px 0 20px;
+    padding-top: 20px;
 }
-.response-viewer {
-    height: fit-content;
+/* .response-viewer {
+    height: 100%;
     width: fit-content;
-}
+} */
 .response-viewer-rater-score-panel {
-    height: fit-content;
-    width: fit-content;
-    padding: 0 0px 0 25px;
+    /* height: fit-content;
+    width: fit-content; */
+    padding-left: 25px;
 }
