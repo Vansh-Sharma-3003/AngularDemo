@@ -35,3 +35,22 @@ a {
 .sidebar-title{
     margin: 0px 10px;
 }
+
+.monitoring-drawer {
+    width: 250px;
+    height: fit-content;
+    position: absolute;
+    left: 253px;
+    top: 290px;
+    background-color: #023b5e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.monitoring-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}

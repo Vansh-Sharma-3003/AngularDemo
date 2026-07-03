@@ -1,0 +1,28 @@
+.monitoring-tabs {
+    display: flex;
+    background-color: #ffffff;
+    align-items: center;
+}
+
+::ng-deep .mat-mdc-tab-nav-bar .mdc-tab-indicator__content--underline {
+    border-color: #070347 !important;
+    border-top-width: 4px !important;
+}
+
+.mat-mdc-tab-link {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+::ng-deep.active-tab .mdc-tab__text-label {
+    color: #070347 !important;
+}
+
+::ng-deep.mdc-tab__text-label {
+    color: #b2b2b2 !important;
+}
+
+.show-status{
+    margin-left: auto;
+    margin-right: 20px;
+}
