@@ -1,0 +1,18 @@
+.monitoring-container {
+    margin-left: 260px;
+    padding: 10px;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    gap: 10px;
+    
+}
+.monitoring-content {
+    position: relative;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #b2ddec;
+    border-radius: 8px;
+    height: calc(100vh - 80px);
+}

@@ -1,0 +1,6 @@
+<div class="monitoring-container">
+    <div class="monitoring-content">
+        <app-monitoring-tabs (tabChanged)="onTabChanged($event)"></app-monitoring-tabs>
+        <app-monitoring-content [tabName]="activeTab"></app-monitoring-content>
+    </div>
+</div>

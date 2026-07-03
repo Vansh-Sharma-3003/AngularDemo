@@ -1,11 +1,14 @@
+<!-- Main Sidebar -->
 <mat-drawer mode="side" opened class="sidebar">
+
   <div class="logo">
     <span class="logo-text">Angular Demo</span>
   </div>
+
   <nav class="menu">
 
     <div class="menu-item">
-      <a mat-button routerLink="" >
+      <a mat-button routerLink="">
         <mat-icon>home</mat-icon>
         <p class="sidebar-title">Home</p>
       </a>
@@ -15,6 +18,14 @@
       <a mat-button routerLink="feedback">
         <mat-icon>feedback</mat-icon>
         <p class="sidebar-title">Feedback</p>
+      </a>
+    </div>
+
+    <!-- Monitoring -->
+    <div class="menu-item" (click)="onToggle(); $event.stopPropagation()">
+      <a mat-button routerLink="monitoring">
+        <mat-icon>monitoring</mat-icon>
+        <p class="sidebar-title">Monitoring</p>
       </a>
     </div>
 
@@ -32,6 +43,16 @@
       </a>
     </div>
 
-
   </nav>
+
+</mat-drawer>
+
+<!-- Second Drawer -->
+<mat-drawer #monitoringDrawer mode="over" position="start" class="monitoring-drawer">
+  <div class="monitoring-header">
+    <span>RATER TRAINING</span>
+    <span>RATER CALIBRATION</span>
+    <span>BACKRATING</span>
+    <span>BACKRATING REVIEW</span>
+  </div>
 </mat-drawer>
