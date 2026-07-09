@@ -23,10 +23,10 @@
 
     <!-- Monitoring -->
     <div class="menu-item" (click)="onToggle(); $event.stopPropagation()">
-      <a mat-button routerLink="monitoring">
-        <mat-icon>monitoring</mat-icon>
-        <p class="sidebar-title">Monitoring</p>
-      </a>
+      <!-- <a mat-button routerLink="monitoring"> -->
+      <mat-icon>monitoring</mat-icon>
+      <p class="sidebar-title">Monitoring</p>
+      <!-- </a> -->
     </div>
 
     <div class="menu-item">
@@ -50,9 +50,10 @@
 <!-- Second Drawer -->
 <mat-drawer #monitoringDrawer mode="over" position="start" class="monitoring-drawer">
   <div class="monitoring-header">
-    <span>RATER TRAINING</span>
-    <span>RATER CALIBRATION</span>
-    <span>BACKRATING</span>
-    <span>BACKRATING REVIEW</span>
+    @for (tabName of tabNames; track tabName) {
+    <a routerLink="monitoring" [state]="{ tabName: tabName }" class="monitoring-title">
+      {{ tabName }}
+    </a>
+    }
   </div>
 </mat-drawer>

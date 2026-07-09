@@ -37,7 +37,7 @@ a {
 }
 
 .monitoring-drawer {
-    width: 250px;
+    width: fit-content;
     height: fit-content;
     position: absolute;
     left: 253px;
@@ -53,4 +53,17 @@ a {
     flex-direction: column;
     gap: 10px;
     color: white;
+}
+
+.monitoring-title {
+  text-decoration: none !important;
+}
+
+.monitoring-title:hover {
+  text-decoration: none !important;
+}
+
+.monitoring-title{
+    font-size: 0.75rem;
+    cursor: pointer;
 }
