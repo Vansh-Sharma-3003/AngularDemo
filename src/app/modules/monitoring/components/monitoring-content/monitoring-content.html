@@ -1,25 +1,25 @@
-<div class="response-viewer-content">
+<div class="monitoring-content">
         <ng-container *ngIf="tabName === MonitoringTabName.RATERTRAINING">
-            <div class="response-viewer">
-                <!-- <app-response-viewer-prompt></app-response-viewer-prompt> -->
+            <div class="monitoring-tab-content">
+                <app-rater-training></app-rater-training>
             </div>
         </ng-container>
 
         <ng-container *ngIf="tabName === MonitoringTabName.RATERCALIBRATION">
-            <div class="response-viewer">
-                <!-- <app-response-viewer-scoring-guide></app-response-viewer-scoring-guide> -->
+            <div class="monitoring-tab-content">
+                <app-rater-calibration></app-rater-calibration>
             </div>
         </ng-container>
 
         <ng-container *ngIf="tabName === MonitoringTabName.BACKRATING">
-            <div class="response-viewer">
-                <!-- <app-response-viewer-scoring-notes></app-response-viewer-scoring-notes> -->
+            <div class="monitoring-tab-content">
+                <app-backrating></app-backrating>
             </div>
         </ng-container>
 
         <ng-container *ngIf="tabName === MonitoringTabName.BACKRATINGREVIEW">
-            <div class="response-viewer">
-                <!-- <app-response-viewer-response></app-response-viewer-response> -->
+            <div class="monitoring-tab-content">
+                <app-backrating-review></app-backrating-review>
             </div>
         </ng-container>
 

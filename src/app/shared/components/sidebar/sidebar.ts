@@ -1,7 +1,8 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { RouterLink, } from '@angular/router';
+import { Router, RouterLink, } from '@angular/router';
 import { MatIcon } from "@angular/material/icon";
+import { MonitoringTabName } from '../../../model/ui/monitoring-tab-name';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,8 +12,16 @@ import { MatIcon } from "@angular/material/icon";
 })
 export class Sidebar {
 
-@ViewChild('monitoringDrawer')
+  @ViewChild('monitoringDrawer')
+
   monitoringDrawer!: MatDrawer;
+
+  readonly tabNames = [
+      MonitoringTabName.RATERTRAINING,
+      MonitoringTabName.RATERCALIBRATION,
+      MonitoringTabName.BACKRATING,
+      MonitoringTabName.BACKRATINGREVIEW
+  ];
 
   onToggle() {
     this.monitoringDrawer.toggle();

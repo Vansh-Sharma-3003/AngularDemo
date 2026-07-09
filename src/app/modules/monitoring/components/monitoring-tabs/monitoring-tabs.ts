@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MonitoringTabName } from '../../../../model/ui/monitoring-tab-name';
 import { MatTabsModule } from "@angular/material/tabs";
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class MonitoringTabs {
 
+  @Input() currentTab: string | null = null;
+  
   @Output() tabChanged = new EventEmitter<string>();
 
   readonly tabs = [
@@ -19,5 +21,14 @@ export class MonitoringTabs {
     MonitoringTabName.BACKRATING,
     MonitoringTabName.BACKRATINGREVIEW
   ];
-  activeTab: any = MonitoringTabName.RATERTRAINING;
+
+  activeTab: string | null = null;
+
+  ngOnInit() {
+    this.activeTab = this.currentTab;
+  }
+
+  onTabChange(tabName: string) {
+    this.tabChanged.emit(tabName);
+  }
 }
