@@ -1,0 +1,13 @@
+.monitoring-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+.monitoring-title{
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 0.75rem;
+    cursor: pointer;
+}

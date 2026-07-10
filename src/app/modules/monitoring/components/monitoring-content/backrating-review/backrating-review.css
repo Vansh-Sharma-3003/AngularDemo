@@ -1,0 +1,15 @@
+.backrating-review-container {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+p{
+    background-color: #63ef63;
+    color: #ffffff;
+    padding: 5px;
+}

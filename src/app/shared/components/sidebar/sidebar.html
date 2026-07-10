@@ -49,11 +49,5 @@
 
 <!-- Second Drawer -->
 <mat-drawer #monitoringDrawer mode="over" position="start" class="monitoring-drawer">
-  <div class="monitoring-header">
-    @for (tabName of tabNames; track tabName) {
-    <a routerLink="monitoring" [state]="{ tabName: tabName }" class="monitoring-title">
-      {{ tabName }}
-    </a>
-    }
-  </div>
+  <app-monitoring-sidenav></app-monitoring-sidenav>
 </mat-drawer>
