@@ -1,1 +1,11 @@
-<p>backrating works!</p>
+<div class="backrating-container">
+    <button (click)="openTab('informed')" [class.active]="activeTab === 'informed'">
+        informed
+    </button>
+
+    <button (click)="openTab('blind')" [class.active]="activeTab === 'blind'">
+        blind
+    </button>
+</div>
+<app-informed-backrating *ngIf="activeTab === 'informed'"></app-informed-backrating>
+<app-blind-backrating *ngIf="activeTab === 'blind'"></app-blind-backrating>

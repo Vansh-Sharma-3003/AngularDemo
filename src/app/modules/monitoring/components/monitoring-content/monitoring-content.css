@@ -1,0 +1,11 @@
+.monitoring-content{
+    height: calc(100vh - 200px);
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.monitoring-tab-content{
+    height: 100%;
+    width: 100%;
+}

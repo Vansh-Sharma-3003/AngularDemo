@@ -22,7 +22,7 @@
 
 .menu-item {
     display: flex;
-    margin: 20px;
+    margin: 20px 0px;
     padding: 5px 0px;
     cursor: pointer;
 }
@@ -32,6 +32,7 @@ a {
     text-decoration: none;
     display: flex;
 }
+
 .sidebar-title{
     margin: 0px 10px;
 }
@@ -48,22 +49,3 @@ a {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.monitoring-header {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: white;
-}
-
-.monitoring-title {
-  text-decoration: none !important;
-}
-
-.monitoring-title:hover {
-  text-decoration: none !important;
-}
-
-.monitoring-title{
-    font-size: 0.75rem;
-    cursor: pointer;
-}
