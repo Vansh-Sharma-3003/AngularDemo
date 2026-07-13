@@ -1,6 +1,6 @@
 <div class="monitoring-header">
     @for (tabName of tabNames; track tabName) {
-    <a routerLink="monitoring" [queryParams]="{ tabName: tabName }" class="monitoring-title">
+    <a routerLink="/monitoring" [queryParams]="{ tabName: tabName }" class="monitoring-title">
         {{ tabName }}
     </a>
     }

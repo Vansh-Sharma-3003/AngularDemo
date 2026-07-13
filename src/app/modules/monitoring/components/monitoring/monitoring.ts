@@ -14,16 +14,13 @@ export class Monitoring {
 
   activeTab: string | null = null;
 
-  tabName: string | null = null;
-  constructor(private route: ActivatedRoute) { }
-
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
-      this.tabName = params.get('tabName');
-    });
-    this.activeTab = this.tabName;
-  }
+  this.route.queryParamMap.subscribe(params => {
+    this.activeTab = params.get('tabName');
+  });
+}
 
   onTabChanged(tabName: string) {
     this.activeTab = tabName;
