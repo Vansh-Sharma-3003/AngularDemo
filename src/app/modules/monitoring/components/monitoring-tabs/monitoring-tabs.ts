@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { MonitoringTabName } from '../../../../model/ui/monitoring-tab-name';
 import { MatTabsModule } from "@angular/material/tabs";
 import { CommonModule } from '@angular/common';
@@ -11,8 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class MonitoringTabs {
 
-  @Input() currentTab: string | null = null;
-  
+@Input() currentTab: string | null = null;
+
   @Output() tabChanged = new EventEmitter<string>();
 
   readonly tabs = [
@@ -23,12 +23,13 @@ export class MonitoringTabs {
   ];
 
   activeTab: string | null = null;
-
-  ngOnInit() {
-    this.activeTab = this.currentTab;
-  }
-
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['currentTab']) {
+      this.activeTab = this.currentTab;
+    }
+}
   onTabChange(tabName: string) {
+    this.activeTab = tabName;
     this.tabChanged.emit(tabName);
   }
 }

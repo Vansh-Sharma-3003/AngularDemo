@@ -2,7 +2,7 @@
     <nav mat-tab-nav-bar [tabPanel]="tabPanel">
         @for (tab of tabs; track tab) {
         <a mat-tab-link [active]="activeTab === tab" [ngClass]="{'active-tab': activeTab === tab}"
-            (click)="activeTab = tab; tabChanged.emit(tab)">
+            (click)="onTabChange(tab)">
             {{ tab }}
         </a>
         }
