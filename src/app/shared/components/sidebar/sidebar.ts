@@ -17,13 +17,6 @@ export class Sidebar {
 
   monitoringDrawer!: MatDrawer;
 
-  readonly tabNames = [
-      MonitoringTabName.RATERTRAINING,
-      MonitoringTabName.RATERCALIBRATION,
-      MonitoringTabName.BACKRATING,
-      MonitoringTabName.BACKRATINGREVIEW
-  ];
-
   onToggle() {
     this.monitoringDrawer.toggle();
   }

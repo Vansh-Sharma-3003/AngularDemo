@@ -11,7 +11,7 @@ import { BlindBackrating } from './blind-backrating/blind-backrating';
 })
 export class Backrating {
 
-  activeTab = '';
+  activeTab = 'informed';
   openTab(tab: string) {
     this.activeTab = tab;
   }

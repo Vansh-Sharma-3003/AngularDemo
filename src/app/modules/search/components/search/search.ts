@@ -1,10 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSidenavContainer } from "@angular/material/sidenav";
 import { MoreFilters } from '../more-filters/more-filters';
 import { TopFilters } from "../top-filters/top-filters";
-import { Subject, take, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { SearchFacadeService } from '../../services/search-facade-service';
 import { SearchService } from '../../services/search-service';
 import { FilterConfig } from '../../../../model/ui/form-control';
@@ -131,6 +131,6 @@ export class Search {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
+  
 }
 

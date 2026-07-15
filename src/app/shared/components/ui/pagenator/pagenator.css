@@ -1,0 +1,16 @@
+::ng-deep .mat-mdc-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important;
+  position: relative;
+}
+
+::ng-deep .mat-mdc-paginator-page-size {
+  margin-right: auto;
+}
+
+::ng-deep .mat-mdc-paginator-range-actions {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

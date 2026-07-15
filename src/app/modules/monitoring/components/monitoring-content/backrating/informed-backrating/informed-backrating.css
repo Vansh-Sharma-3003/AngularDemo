@@ -1,11 +1,8 @@
 .informed-backrating-container {
     height: 92%;
     width: 100%;
-    padding: 20px;
     overflow: hidden;
     box-sizing: border-box;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
 }
 
 .search-form-container {
@@ -35,4 +32,20 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     align-items: center;
+}
+
+.data-table{
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    max-height: calc(100% - 170px);
+    overflow-y: auto;
+}
+
+.pagenator{
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
 }
