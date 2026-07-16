@@ -44,6 +44,9 @@
 }
 
 .pagenator{
+    position: absolute;
+    bottom: 20px;
+    width: 96%;
     margin-top: 10px;
     padding: 5px;
     border: 1px solid #e0e0e0;

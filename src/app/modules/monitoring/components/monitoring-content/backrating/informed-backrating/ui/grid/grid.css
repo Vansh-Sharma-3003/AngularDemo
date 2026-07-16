@@ -1,0 +1,19 @@
+
+.mat-elevation-z8{
+    background-color: #ffffff;
+}
+
+.search-data-table{
+    overflow-x: auto;
+}
+
+
+.data-not-come{
+    padding: 10px;
+}
+
+.response-link{
+    color: #1976d2;
+    text-decoration: none;
+    cursor: pointer;
+}

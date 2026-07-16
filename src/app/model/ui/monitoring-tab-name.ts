@@ -4,3 +4,10 @@ export enum MonitoringTabName {
     BACKRATING = 'BACKRATING',
     BACKRATINGREVIEW = 'BACKRATING REVIEW'
 }
+
+export enum MonitoringTabsNames {
+    RATERTRAINING = 'ratertraining',
+    RATERCALIBRATION = 'ratercalibration',
+    BACKRATING = 'backrating',
+    BACKRATINGREVIEW = 'backratingreview'
+}

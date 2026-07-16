@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MonitoringTabName } from '../../../../model/ui/monitoring-tab-name';
+import { MonitoringTabName, MonitoringTabsNames } from '../../../../model/ui/monitoring-tab-name';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,9 +10,21 @@ import { RouterLink } from '@angular/router';
 })
 export class MonitoringSidenav {
   readonly tabNames = [
-      MonitoringTabName.RATERTRAINING,
-      MonitoringTabName.RATERCALIBRATION,
-      MonitoringTabName.BACKRATING,
-      MonitoringTabName.BACKRATINGREVIEW
-  ];
+  {
+    label: MonitoringTabName.RATERTRAINING,
+    value: MonitoringTabsNames.RATERTRAINING,
+  },
+  {
+    label: MonitoringTabName.RATERCALIBRATION,
+    value: MonitoringTabsNames.RATERCALIBRATION,
+  },
+  {
+    label: MonitoringTabName.BACKRATING,
+    value: MonitoringTabsNames.BACKRATING,
+  },
+  {
+    label: MonitoringTabName.BACKRATINGREVIEW,
+    value: MonitoringTabsNames.BACKRATINGREVIEW,
+  },
+];
 }

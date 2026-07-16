@@ -18,10 +18,33 @@ export interface SearchFilters {
   status?: string;
   searchResult?: string;
   responseId?: string;
+  candidateId?: string;
   nameId?: string;
   leader?: string;
   teamLeader?: string;
   queueTpye?: string;
   feedback?: string;
   responseType?: string;
+}
+
+export interface INFORMED_TABLE_DATA {
+  responseId: string;
+  candidateId: string;
+  nameId: string;
+  leader: string;
+  feedback: string;
+  responseType: string;
+  status: string;
+  priority: string;
+}
+
+export interface InformedSearchFilters {
+  responseId?: string;
+  candidateId?: string;
+  nameId?: string;
+  leader?: string;
+  feedback?: string;
+  responseType?: string;
+  status?: string;
+  priority?: string;
 }

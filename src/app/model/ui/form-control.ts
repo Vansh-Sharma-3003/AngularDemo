@@ -14,3 +14,10 @@ export interface FilterConfig{
     searchType: Record<string,string>;
     status: Record<string,string>;
 }
+
+export interface InformedFilterConfig{
+    leader: Record<string,string>;
+    feedback: Record<string,string>;
+    status: Record<string,string>;
+    priority: Record<string,string>;
+}

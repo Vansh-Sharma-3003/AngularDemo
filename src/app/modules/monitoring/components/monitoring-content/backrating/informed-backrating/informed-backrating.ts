@@ -1,38 +1,38 @@
 import { Component } from '@angular/core';
 import { MatSidenavContainer } from "@angular/material/sidenav";
-import { FilterConfig } from '../../../../../../model/ui/form-control';
-import { TopFilters } from '../../../../../search/components/top-filters/top-filters';
-import { MoreFilters } from '../../../../../search/components/more-filters/more-filters';
-import { Grid } from "../../../../../../shared/components/ui/grid/grid";
-import { MOCK_TABLE_DATA } from '../../../../../../model/ui/table-data';
+import { InformedFilterConfig } from '../../../../../../model/ui/form-control';
+import { INFORMED_TABLE_DATA } from '../../../../../../model/ui/table-data';
 import { Pagenator } from "../../../../../../shared/components/ui/pagenator/pagenator";
 import { PageEvent } from '@angular/material/paginator';
 import { Subject, takeUntil } from 'rxjs';
-import { SearchFacadeService } from '../../../../../search/services/search-facade-service';
-import { SearchService } from '../../../../../search/services/search-service';
+import { MonitoringFacadeService } from '../../../../services/monitoring-facade-service';
+import { MonitoringService } from '../../../../services/monitoring-service';
+import { MoreFilters } from "./more-filters/more-filters";
+import { TopFilters } from './top-filters/top-filters';
+import { Grid } from './ui/grid/grid';
 
 @Component({
   selector: 'app-informed-backrating',
-  imports: [MatSidenavContainer, TopFilters, MoreFilters, Grid, Pagenator],
+  imports: [MatSidenavContainer, Grid, Pagenator, MoreFilters, TopFilters],
   templateUrl: './informed-backrating.html',
   styleUrl: './informed-backrating.css',
 })
 export class InformedBackrating {
   
 
-  ELEMENT_DATA: MOCK_TABLE_DATA[] = [];
+  ELEMENT_DATA: INFORMED_TABLE_DATA[] = [];
 
-  pagedData: MOCK_TABLE_DATA[] | null = [];
+  pagedData: INFORMED_TABLE_DATA[] | null = [];
 
-  filterConfig: FilterConfig | null = null;
+  filterConfig: InformedFilterConfig | null = null;
 
   pageState !: PageEvent;
 
   private destroy$ = new Subject<void>();
 
   constructor(
-    private facade: SearchFacadeService,
-    private searchService: SearchService
+    private facade: MonitoringFacadeService,
+    private searchService: MonitoringService
   ) { }
 
   ngOnInit() {
@@ -40,11 +40,10 @@ export class InformedBackrating {
     this.setUpSubscriber();
     this.searchService.loadFilterConfig();
     this.searchService.loadTableData();
-
   }
 
   setUpSubscriber() {
-    this.facade.filterConfig$
+    this.facade.informedFilterConfig$
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (filterConfig) => {
