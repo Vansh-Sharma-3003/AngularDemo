@@ -6,14 +6,15 @@
                 </app-top-filters>
             </div>
             <div class="more-filters">
-                <app-more-filters [filterConfig]="filterConfig">
-                </app-more-filters>
+                <app-more-filters [filterConfig]="filterConfig"
+                ></app-more-filters>
             </div>
         </div>
     </mat-sidenav-container>
 
     <div class="data-table">
-            <app-grid [ELEMENT_DATA]="ELEMENT_DATA"></app-grid>
+        <app-grid [data]="ELEMENT_DATA" [columns]="columns" (cellClick)="openDetails($event)">
+            </app-grid>
     </div>
 
     @if(ELEMENT_DATA.length != 0){

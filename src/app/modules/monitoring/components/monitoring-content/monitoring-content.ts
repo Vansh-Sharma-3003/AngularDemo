@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { MonitoringTabName } from '../../../../model/ui/monitoring-tab-name';
+import { MonitoringTabName, MonitoringTabsNames } from '../../../../model/ui/monitoring-tab-name';
 import { RaterTraining } from "./rater-training/rater-training";
 import { RaterCalibration } from "./rater-calibration/rater-calibration";
 import { BackratingReview } from "./backrating-review/backrating-review";
@@ -16,5 +16,5 @@ export class MonitoringContent {
 
     @Input() tabName: string | null = null;
     
-    MonitoringTabName = MonitoringTabName;
+    MonitoringTabsNames = MonitoringTabsNames;
 }

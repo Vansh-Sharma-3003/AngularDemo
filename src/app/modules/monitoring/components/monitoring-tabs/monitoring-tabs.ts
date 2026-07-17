@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
-import { MonitoringTabName } from '../../../../model/ui/monitoring-tab-name';
+import { MonitoringTabName, MonitoringTabsNames } from '../../../../model/ui/monitoring-tab-name';
 import { MatTabsModule } from "@angular/material/tabs";
 import { CommonModule } from '@angular/common';
 
@@ -16,11 +16,23 @@ export class MonitoringTabs {
   @Output() tabChanged = new EventEmitter<string>();
 
   readonly tabs = [
-    MonitoringTabName.RATERTRAINING,
-    MonitoringTabName.RATERCALIBRATION,
-    MonitoringTabName.BACKRATING,
-    MonitoringTabName.BACKRATINGREVIEW
-  ];
+  {
+    label: MonitoringTabName.RATERTRAINING,
+    value: MonitoringTabsNames.RATERTRAINING,
+  },
+  {
+    label: MonitoringTabName.RATERCALIBRATION,
+    value: MonitoringTabsNames.RATERCALIBRATION,
+  },
+  {
+    label: MonitoringTabName.BACKRATING,
+    value: MonitoringTabsNames.BACKRATING,
+  },
+  {
+    label: MonitoringTabName.BACKRATINGREVIEW,
+    value: MonitoringTabsNames.BACKRATINGREVIEW,
+  },
+];
 
   activeTab: string | null = null;
 

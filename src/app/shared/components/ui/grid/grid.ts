@@ -1,73 +1,42 @@
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, inject, Input, SimpleChanges, ViewChild } from '@angular/core';
+
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
-import { SEARCH_FIELDS_MOCK_DATA } from '../../../../modules/search/services/search-mock-data';
-import { Router } from "@angular/router";
-
+import { GridColumn, MOCK_TABLE_DATA } from '../../../../model/ui/table-data';
 @Component({
   selector: 'app-grid',
   imports: [MatTableModule, MatSortModule],
   templateUrl: './grid.html',
   styleUrl: './grid.css',
 })
-export class Grid {
+export class Grid<T> {
+@Input() data: T[] = [];
 
-  private _liveAnnouncer = inject(LiveAnnouncer);
+  @Input() columns: GridColumn<T>[] = [];
 
-  @Input() ELEMENT_DATA: MOCK_TABLE_DATA[] = [];
 
-  readonly FILTERS = SEARCH_FIELDS_MOCK_DATA;
+  @Output()
+  cellClick = new EventEmitter<T>();
 
-  displayedColumns: string[] = [
-    'responseId',
-    'candidateId',
-    'name',
-    'leader',
-    'teamLeader',
-    'queueType',
-    'feedback',
-    'searchResult',
-    'searchType',
-    'responseType',
-    'status'
-  ];
 
-  dataSource = new MatTableDataSource<MOCK_TABLE_DATA>();
+  dataSource = new MatTableDataSource<T>();
 
-  @ViewChild(MatSort) sort!: MatSort;
+  displayedColumns: string[] = [];
 
-  constructor(private router: Router) { }
 
-  ngOnInit() {
-    this.dataSource.data = this.ELEMENT_DATA;
+  ngOnChanges() {
+
+    this.dataSource.data = this.data;
+
+    this.displayedColumns =
+      this.columns.map(x => x.columnDef as string);
+
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['ELEMENT_DATA']) {
-      this.dataSource.data = this.ELEMENT_DATA;
-    }
-  }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
+  onClick(row:T){
 
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
+    this.cellClick.emit(row);
 
-  onClick(responseId: string, responseStatus: string) {
-    this.router.navigate(['/response'], {
-      state: {
-        responseId: responseId,
-        responseStatus: responseStatus
-      }
-    });
   }
 }

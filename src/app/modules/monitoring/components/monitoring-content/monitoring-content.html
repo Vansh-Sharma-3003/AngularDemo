@@ -1,23 +1,23 @@
 <div class="monitoring-content">
-        <ng-container *ngIf="tabName === MonitoringTabName.RATERTRAINING">
+        <ng-container *ngIf="tabName === MonitoringTabsNames.RATERTRAINING">
             <div class="monitoring-tab-content">
                 <app-rater-training></app-rater-training>
             </div>
         </ng-container>
 
-        <ng-container *ngIf="tabName === MonitoringTabName.RATERCALIBRATION">
+        <ng-container *ngIf="tabName === MonitoringTabsNames.RATERCALIBRATION">
             <div class="monitoring-tab-content">
                 <app-rater-calibration></app-rater-calibration>
             </div>
         </ng-container>
 
-        <ng-container *ngIf="tabName === MonitoringTabName.BACKRATING">
+        <ng-container *ngIf="tabName === MonitoringTabsNames.BACKRATING">
             <div class="monitoring-tab-content">
                 <app-backrating></app-backrating>
             </div>
         </ng-container>
 
-        <ng-container *ngIf="tabName === MonitoringTabName.BACKRATINGREVIEW">
+        <ng-container *ngIf="tabName === MonitoringTabsNames.BACKRATINGREVIEW">
             <div class="monitoring-tab-content">
                 <app-backrating-review></app-backrating-review>
             </div>

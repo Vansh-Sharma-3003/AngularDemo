@@ -1,50 +1,104 @@
 import { Component } from '@angular/core';
 import { MatSidenavContainer } from "@angular/material/sidenav";
-import { FilterConfig } from '../../../../../../model/ui/form-control';
-import { TopFilters } from '../../../../../search/components/top-filters/top-filters';
-import { MoreFilters } from '../../../../../search/components/more-filters/more-filters';
-import { Grid } from "../../../../../../shared/components/ui/grid/grid";
-import { MOCK_TABLE_DATA } from '../../../../../../model/ui/table-data';
+import { InformedFilterConfig } from '../../../../../../model/ui/form-control';
+import { GridColumn, INFORMED_TABLE_DATA } from '../../../../../../model/ui/table-data';
 import { Pagenator } from "../../../../../../shared/components/ui/pagenator/pagenator";
 import { PageEvent } from '@angular/material/paginator';
 import { Subject, takeUntil } from 'rxjs';
-import { SearchFacadeService } from '../../../../../search/services/search-facade-service';
-import { SearchService } from '../../../../../search/services/search-service';
+import { MonitoringFacadeService } from '../../../../services/monitoring-facade-service';
+import { MonitoringService } from '../../../../services/monitoring-service';
+import { MoreFilters } from "./more-filters/more-filters";
+import { TopFilters } from './top-filters/top-filters';
+import { INFORMED_FILTER_CONFIG_DATA } from '../../../../services/informed-mock-data';
+import { Router } from '@angular/router';
+import { Grid } from '../../../../../../shared/components/ui/grid/grid';
 
 @Component({
   selector: 'app-informed-backrating',
-  imports: [MatSidenavContainer, TopFilters, MoreFilters, Grid, Pagenator],
+  imports: [MatSidenavContainer, Grid, Pagenator, MoreFilters, TopFilters],
   templateUrl: './informed-backrating.html',
   styleUrl: './informed-backrating.css',
 })
 export class InformedBackrating {
   
 
-  ELEMENT_DATA: MOCK_TABLE_DATA[] = [];
+  ELEMENT_DATA: INFORMED_TABLE_DATA[] = [];
 
-  pagedData: MOCK_TABLE_DATA[] | null = [];
+  pagedData: INFORMED_TABLE_DATA[] | null = [];
 
-  filterConfig: FilterConfig | null = null;
+  filterConfig: InformedFilterConfig | null = null;
 
   pageState !: PageEvent;
 
   private destroy$ = new Subject<void>();
 
+  readonly FILTERS = INFORMED_FILTER_CONFIG_DATA;
+
+  columns: GridColumn<INFORMED_TABLE_DATA>[] = [
+
+{
+ columnDef:'responseId',
+ header:'Response ID',
+ clickable:true,
+ cell:(row)=>row.responseId
+},
+
+{
+ columnDef:'candidateId',
+ header:'Candidate ID'
+},
+
+{
+ columnDef:'nameId',
+ header:'Name'
+},
+
+{
+ columnDef:'leader',
+ header:'Leader',
+ cell:(row)=>this.FILTERS.leader[row.leader]
+},
+
+{
+ columnDef:'feedback',
+ header:'Feedback',
+ cell:(row)=>this.FILTERS.feedback[row.feedback]
+},
+
+{
+ columnDef:'responseType',
+ header:'Response Type'
+},
+
+{
+ columnDef:'status',
+ header:'Status',
+  cell:(row)=>this.FILTERS.status[row.status]
+},
+
+{
+ columnDef:'priority',
+ header:'Priority',
+  cell:(row)=>this.FILTERS.priority[row.priority]
+}
+
+];
+
   constructor(
-    private facade: SearchFacadeService,
-    private searchService: SearchService
+    private facade: MonitoringFacadeService,
+    private Service: MonitoringService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.pageState = this.facade.getPageState();
     this.setUpSubscriber();
-    this.searchService.loadFilterConfig();
-    this.searchService.loadTableData();
-
+    this.Service.loadFilterConfig();
+    this.Service.loadTableData();
   }
 
   setUpSubscriber() {
-    this.facade.filterConfig$
+    this.facade.informedFilterConfig$
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (filterConfig) => {
@@ -124,6 +178,19 @@ export class InformedBackrating {
     this.ELEMENT_DATA = (this.pagedData ?? []).slice(start, end);
 
   }
+
+  openDetails(row: INFORMED_TABLE_DATA) {
+
+  this.router.navigate(
+    ['/response'],
+    {
+      queryParams:{
+        status: this.FILTERS.status[row.status]
+      }
+    }
+  );
+
+}
 
   ngOnDestroy() {
     this.destroy$.next();

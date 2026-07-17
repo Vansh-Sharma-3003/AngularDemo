@@ -1,7 +1,7 @@
 <div class="monitoring-header">
     @for (tabName of tabNames; track tabName) {
-    <a routerLink="/monitoring" [queryParams]="{ tabName: tabName }" class="monitoring-title">
-        {{ tabName }}
+    <a routerLink="/monitoring" [queryParams]="{ tabName: tabName.value}" class="monitoring-title">
+        {{ tabName.label }}
     </a>
     }
 </div>
