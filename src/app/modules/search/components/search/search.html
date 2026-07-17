@@ -14,18 +14,17 @@
         </mat-sidenav-container>
 
         <div class="data-table">
-            <app-grid [ELEMENT_DATA]="ELEMENT_DATA"></app-grid>
+            <app-grid [data]="ELEMENT_DATA" [columns]="columns" (cellClick)="openDetails($event)">
+            </app-grid>
         </div>
 
         @if(ELEMENT_DATA.length != 0){
-            <div class="pagenator">
-                <app-pagenator [length]="pagedData?.length ?? 0" 
-                    [pageIndex]="pageState.pageIndex"
-                    [pageSize]="pageState.pageSize" 
-                    [pageSizeOptions]="[10,20,30,40,50]"
-                    (pageChanged)="onPageChange($event)">
-                </app-pagenator>
-            </div>
+        <div class="pagenator">
+            <app-pagenator [length]="pagedData?.length ?? 0" [pageIndex]="pageState.pageIndex"
+                [pageSize]="pageState.pageSize" [pageSizeOptions]="[10,20,30,40,50]"
+                (pageChanged)="onPageChange($event)">
+            </app-pagenator>
+        </div>
         }
 
     </div>

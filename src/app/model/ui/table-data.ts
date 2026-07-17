@@ -48,3 +48,16 @@ export interface InformedSearchFilters {
   status?: string;
   priority?: string;
 }
+
+
+export interface GridColumn<T> {
+  columnDef: Extract<keyof T, string>;
+  header: string;
+  sortable?: boolean;
+
+  // Optional value transformation
+  cell?: (row: T) => string;
+
+  // Optional clickable cell
+  clickable?: boolean;
+}
