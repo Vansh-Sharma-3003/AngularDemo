@@ -10,11 +10,11 @@ button{
     width: 100px;
     background-color: white;
     border: 1px solid #e4e1e1;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button.active {
   background: #007bff;
   color: white;
-  border: 1px solid #000000;
 }
