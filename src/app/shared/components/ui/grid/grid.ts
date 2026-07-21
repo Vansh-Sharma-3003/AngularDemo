@@ -10,7 +10,8 @@ import { GridColumn } from '../../../../model/ui/table-data';
   styleUrl: './grid.css',
 })
 export class Grid<T> {
-@Input() data: T[] = [];
+  
+  @Input() data: T[] = [];
   @Input() columns: GridColumn<T>[] = [];
   @Output() cellClick = new EventEmitter<T>();
 
@@ -35,4 +36,5 @@ export class Grid<T> {
   onClick(row: T) {
     this.cellClick.emit(row);
   }
+
 }
