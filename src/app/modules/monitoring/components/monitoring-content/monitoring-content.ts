@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { MonitoringTabName, MonitoringTabsNames } from '../../../../model/ui/monitoring-tab-name';
+import { MonitoringTabsNames } from '../../../../model/ui/monitoring-tab-name';
 import { RaterTraining } from "./rater-training/rater-training";
 import { RaterCalibration } from "./rater-calibration/rater-calibration";
 import { BackratingReview } from "./backrating-review/backrating-review";

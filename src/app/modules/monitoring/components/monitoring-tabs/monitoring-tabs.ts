@@ -12,27 +12,26 @@ import { CommonModule } from '@angular/common';
 export class MonitoringTabs {
 
   @Input() currentTab: string | null = null;
-
   @Output() tabChanged = new EventEmitter<string>();
 
   readonly tabs = [
-  {
-    label: MonitoringTabName.RATERTRAINING,
-    value: MonitoringTabsNames.RATERTRAINING,
-  },
-  {
-    label: MonitoringTabName.RATERCALIBRATION,
-    value: MonitoringTabsNames.RATERCALIBRATION,
-  },
-  {
-    label: MonitoringTabName.BACKRATING,
-    value: MonitoringTabsNames.BACKRATING,
-  },
-  {
-    label: MonitoringTabName.BACKRATINGREVIEW,
-    value: MonitoringTabsNames.BACKRATINGREVIEW,
-  },
-];
+    {
+      label: MonitoringTabName.RATERTRAINING,
+      value: MonitoringTabsNames.RATERTRAINING,
+    },
+    {
+      label: MonitoringTabName.RATERCALIBRATION,
+      value: MonitoringTabsNames.RATERCALIBRATION,
+    },
+    {
+      label: MonitoringTabName.BACKRATING,
+      value: MonitoringTabsNames.BACKRATING,
+    },
+    {
+      label: MonitoringTabName.BACKRATINGREVIEW,
+      value: MonitoringTabsNames.BACKRATINGREVIEW,
+    },
+  ];
 
   activeTab: string | null = null;
 
