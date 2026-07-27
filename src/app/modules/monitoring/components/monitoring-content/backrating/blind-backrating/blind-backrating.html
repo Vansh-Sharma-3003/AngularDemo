@@ -1,3 +1,14 @@
 <div class="blind-backrating-container">
-    <p>blind backrating work in progress please check back later</p>
+    <mat-sidenav-container>
+        <div class="search-form-container">
+            <div class="top-filters">
+                <app-top-filters [filterConfig]="filterConfig">
+                </app-top-filters>
+            </div>
+            <div class="more-filters">
+                <app-more-filters [filterConfig]="filterConfig"
+                ></app-more-filters>
+            </div>
+        </div>
+    </mat-sidenav-container>
 </div>

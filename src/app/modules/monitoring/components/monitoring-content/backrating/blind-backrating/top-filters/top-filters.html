@@ -1,0 +1,37 @@
+<div class="top-filters-form">
+    <form 
+        [formGroup]="topFilterForm" 
+        (ngSubmit)="onSubmit()" 
+        class="top-filter-form"
+    >
+
+        <app-input
+            [formControlconfig]="topFilters.nameId"
+            formControlName="nameId"
+            class="search-filed">
+        </app-input>
+        
+        <app-select
+            [formControlconfig]="topFilters.status"
+            formControlName="status"
+            class="search-filed">
+        </app-select>
+
+        <app-input
+            [formControlconfig]="topFilters.responseId"
+            formControlName="responseId"
+            class="search-filed">
+        </app-input>
+
+        <app-select
+            [formControlconfig]="topFilters.priority"
+            formControlName="priority"
+            class="search-filed">
+        </app-select>
+        
+        <div class="buttons">
+            <button type="submit" class="response-button">Get Response</button>
+            <button type="button" class="reset-button" (click)="onResetClick()">Reset</button>
+        </div>
+    </form>
+</div>
